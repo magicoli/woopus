@@ -35,7 +35,7 @@ if(is_admin()) {
 /** Enable plugin updates with license check **/
 require_once plugin_dir_path( __FILE__ ) . 'lib/wp-package-updater/class-wp-package-updater.php';
 $wppuswci_updater = new WP_Package_Updater(
-	'http://monty.magiiic.com',
+	'https://magiiic.com',
 	wp_normalize_path( __FILE__ ),
 	wp_normalize_path( plugin_dir_path( __FILE__ ) ),
 	true
