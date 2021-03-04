@@ -25,7 +25,7 @@ WooCommerce integration for WP Plugin Update Server
 
 = A question that someone might have =
 
-An answer to that question is 42.
+The answer is 42.
 
 == Changelog ==
 
