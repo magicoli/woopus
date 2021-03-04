@@ -7,7 +7,7 @@
  * Author URI:      https://magiiic.com/
  * Text Domain:     wppus-wci
  * Domain Path:     /languages
- * Version:         0.0.1
+ * Version:         0.0.2
  *
  * @package         WPPUS_Woocommerce_Integration
  */
