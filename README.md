@@ -29,6 +29,8 @@ An answer to that question is 42.
 
 ## Changelog
 
+### 0.0.3
+
 ### 0.0.2
 * added update libraries
 * added admin files
