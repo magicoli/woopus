@@ -11,11 +11,18 @@ $wppuswci_dependencies = [
     "optional" =>  false
   ],
   [
+    "name" =>  "License Manager for WooCommerce",
+    "host" =>  "wordpress",
+    "slug" =>  "license-manager-for-woocommerce/license-manager-for-woocommerce.php",
+    "uri" =>  "https://wordpress.org/plugins/license-manager-for-woocommerce",
+    "optional" =>  false
+  ],
+  [
     "name" =>  "WP Plugin Update Server",
     "host" =>  "GitHub",
     "slug" =>  "wp-plugin-update-server/wp-plugin-update-server.php",
     "uri" =>  "https://github.com/froger-me/wp-plugin-update-server",
-    "description" =>  "Can be either on same server or on another one.",
+    "description" =>  "Can be installed either on the same server or on another one.",
     "optional" =>  true
   ],
 ];
