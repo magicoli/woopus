@@ -1,11 +1,4 @@
 <?php
-/**
- * Settings
- *
- * Author: Olivier van Helden
- * Version: 0.0.1
- */
-
 if ( ! defined( 'WPINC' ) ) die;
 
 function wppuswci_register_settings() {
@@ -13,10 +6,27 @@ function wppuswci_register_settings() {
     $readonly=true;
   }
 
+  // if(!get_option('license_key_wppus-woocommerce-integration')) {
+    require_once(ABSPATH . '/wp-admin/includes/plugin.php');
+    $PluginURI = get_plugin_data(plugin_dir_path(__DIR__) . '/wppus-woocommerce-integration.php', $markup = true, $translate = true )['PluginURI'];
+    $description = sprintf(__('Register on %s to get a license key', 'wppus-wci'), '<a href="$PluginURI" target=_blank>' . $PluginURI . '</a>');
+  // }
+
   wppuswci_settings_add_option( 'license_key_wppus-woocommerce-integration', "", array(
   	'name' => __('License key', 'wppus-wci'),
-  	'description' => sprintf(__('Register on %s to get a license key', 'wppus-wci'), '<a href=https://magiiic.com/wordpress/plugins/wppus-woocommerce-integration-by-magiiic/>Magiiic.com</a>'),
+  	'description' => $description,
     'readonly' => true,
+  ));
+
+  wppuswci_settings_add_option( 'wppuswci_pus_url', '', array(
+    'category' => __('Update server', 'wppus-wci'),
+  	'name' => __('Update server URL', 'wppus-wci'),
+    'default' => get_home_url(),
+  ));
+
+  wppuswci_settings_add_option( 'wppuswci_pus_api_key', '', array(
+    'category' => __('Update server', 'wppus-wci'),
+  	'name' => __('API Authentication Key', 'wppus-wci'),
   ));
 
   wppuswci_settings_add_option('wppuswci_coffee', "", array(
@@ -34,7 +44,13 @@ function wppuswci_display_settings_page()
 	// if ( ! current_user_can( 'manage_options' ) ) {
 	// 		return;
 	// }
-	require(plugin_dir_path(__FILE__) . 'inc/settings-page.php');
+  // new wppuswci_Notice( "This is something. " . uniqid() . ' ' . __FILE__, 'warning' );
+  require(plugin_dir_path(__FILE__) . 'inc/settings-page.php');
+  if($notices) {
+    foreach ($notices as $notice) {
+      $notice->display_admin_notice();
+    }
+  }
 }
 
 function wppuswci_settings_link( $links ) {

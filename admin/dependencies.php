@@ -15,6 +15,7 @@ $wppuswci_dependencies = [
     "host" =>  "GitHub",
     "slug" =>  "wp-plugin-update-server/wp-plugin-update-server.php",
     "uri" =>  "https://github.com/froger-me/wp-plugin-update-server",
+    "description" =>  "Can be either on same server or on another one.",
     "optional" =>  true
   ],
 ];
@@ -71,16 +72,12 @@ function wppuswci_dependencies_check() {
     $wppuswci_recommended[$dependency['name']]=$dependency['name'] . " <span class=actions>" . join(' ', $actions) . "</span>";
   }
   if(!empty($required)) {
-    add_action( 'admin_notices', function() {
-      global $required, $recommended;
-      echo '<div class="notice notice-error is-dismissible">';
-      if(!empty($required)) echo "<h2>" . sprintf( __("%s requires these plugins:", 'wppus-wci') , 'WPPUS Woocommerce integration' ) . "</h2>"
-      . "<ul><li><strong>" . join("</li><li>", $required) . "</strong></li></ul>";
-      if(!empty($recommended)) echo "<ul><li>" . join("</li><li>", $recommended) . "</li></ul></p>";
-      echo '</div>';
-    } );
+    // $notices[] = new wppuswci_Notice( "<p><strong>$new_license->message</strong>: $new_license->package_slug $new_license->license_key $new_license->email $new_license->owner_name</p>", $new_license->result );
+    $message = "<h2>" . sprintf( __("%s requires these plugins:", 'wppus-wci') , 'WPPUS Woocommerce integration' ) . "</h2>"
+    . "<ul><li><strong>" . join("</li><li>", $required) . "</strong></li></ul>";
+
+    if(!empty($recommended))
+    $message .= "<ul><li>" . join("</li><li>", $recommended) . "</li></ul></p>";
+    new wppuswci_Notice( $message, 'error' );
   }
-  // if(count($unmet) > "0") {
-  // }
-  // return $unmet;
 }

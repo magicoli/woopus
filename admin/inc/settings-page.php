@@ -105,4 +105,5 @@ global $wppuswci_dependencies, $wppuswci_recommended, $wppuswci_required;
 		</table>
 		<?php if ( current_user_can( 'manage_options' ) ) submit_button(); ?>
 	</form>
+	<?php include('wppus-page.php'); ?>
 </div>
