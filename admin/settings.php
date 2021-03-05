@@ -7,14 +7,14 @@ function wppuswci_register_settings() {
   }
 
   // if(!get_option('license_key_wppus-woocommerce-integration')) {
-    require_once(ABSPATH . '/wp-admin/includes/plugin.php');
-    $PluginURI = get_plugin_data(plugin_dir_path(__DIR__) . '/wppus-woocommerce-integration.php', $markup = true, $translate = true )['PluginURI'];
-    $description = sprintf(__('Register on %s to get a license key', 'wppus-wci'), '<a href="$PluginURI" target=_blank>' . $PluginURI . '</a>');
+  //   require_once(ABSPATH . '/wp-admin/includes/plugin.php');
+  //   $PluginURI = get_plugin_data(plugin_dir_path(__DIR__) . '/wppus-woocommerce-integration.php', $markup = true, $translate = true )['PluginURI'];
+  //   $description = sprintf(__('Register on %s to get a license key', 'wppus-wci'), '<a href="$PluginURI" target=_blank>' . $PluginURI . '</a>');
   // }
 
   wppuswci_settings_add_option( 'license_key_wppus-woocommerce-integration', "", array(
   	'name' => __('License key', 'wppus-wci'),
-  	'description' => $description,
+  	'description' => sprintf(__('Contact %s to get a license key', 'wppus-wci'), '<a href="https://magiiic.com/" target=_blank>Magiiic</a>'),
     'readonly' => true,
   ));
 
@@ -25,8 +25,14 @@ function wppuswci_register_settings() {
   ));
 
   wppuswci_settings_add_option( 'wppuswci_pus_api_key', '', array(
-    'category' => __('Update server', 'wppus-wci'),
-  	'name' => __('API Authentication Key', 'wppus-wci'),
+  	'name' => __('Update server API Authentication Key', 'wppus-wci'),
+  ));
+
+  wppuswci_settings_add_option( 'wppuswci_lm_key', '', array(
+  	'name' => __('License Manager Consumer key', 'wppus-wci'),
+  ));
+  wppuswci_settings_add_option( 'wppuswci_lm_secret', '', array(
+  	'name' => __('License Manager Consumer secret', 'wppus-wci'),
   ));
 
   wppuswci_settings_add_option('wppuswci_coffee', "", array(
