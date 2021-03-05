@@ -25,6 +25,13 @@ $wppuswci_dependencies = [
     "description" =>  "Can be installed either on the same server or on another one.",
     "optional" =>  true
   ],
+  [
+    "name" =>  "WooCommerce Subscriptions",
+    "host" =>  "WooCommerce",
+    "slug" =>  "woocommerce-subscriptions/woocommerce-subscriptions.php",
+    "uri" =>  "https://woocommerce.com/products/woocommerce-subscriptions/",
+    "optional" =>  true
+  ],
 ];
 
 add_action( 'admin_init', 'wppuswci_dependencies_check' );
