@@ -65,10 +65,16 @@ global $wppuswci_dependencies, $wppuswci_recommended, $wppuswci_required;
 							$input="<a href='$value'>$value</a>";
 							break;
 
+						case 'textarea';
+							$before=$name;
+							$input="<textarea id='$option' name='$option' cols=40 rows=10 class=autoresize>$value</textarea>";
+							break;
+
 						case 'string';
 						case '';
 						case NULL;
 							$type='text';
+
 						default:
 						  $class.="regular-text $class";
 							$input="<input id='$option' name='$option' type='$type' class='$class' value='$value' $onclick $readonly/>";

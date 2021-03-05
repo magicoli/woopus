@@ -17,7 +17,6 @@ function wppuswci_register_settings() {
   	'description' => sprintf(__('Contact %s to get a license key', 'wppus-wci'), '<a href="https://magiiic.com/" target=_blank>Magiiic</a>'),
     'readonly' => true,
   ));
-
   wppuswci_settings_add_option( 'wppuswci_pus_url', '', array(
     'category' => __('Update server', 'wppus-wci'),
   	'name' => __('Update server URL', 'wppus-wci'),
@@ -33,6 +32,12 @@ function wppuswci_register_settings() {
   ));
   wppuswci_settings_add_option( 'wppuswci_lm_secret', '', array(
   	'name' => __('License Manager Consumer secret', 'wppus-wci'),
+  ));
+
+  wppuswci_settings_add_option( 'wppuswci_debug', '', array(
+    'category' => __('Debug', 'wppus-wci'),
+    'type' => 'textarea',
+  	'name' => __('Debug area', 'wppus-wci'),
   ));
 
   wppuswci_settings_add_option('wppuswci_coffee', "", array(
