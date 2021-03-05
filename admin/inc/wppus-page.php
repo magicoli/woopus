@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'WPINC' ) ) die;
 ?>
-<h1><?php _e('Debug', 'wppus-wci'); ?></h1>
+<h1><?php echo 'Debug'; ?></h1>
 <?php
 
 ## API Doc https://github.com/froger-me/wp-plugin-update-server/blob/master/licenses.md

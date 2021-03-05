@@ -1,0 +1,108 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WPPUS WooCommerce Integration\n"
+"POT-Creation-Date: 2021-03-05 10:38-0400\n"
+"PO-Revision-Date: 2021-03-05 10:50-0400\n"
+"Last-Translator: Olivier van Helden <olivier@van-helden.net>\n"
+"Language-Team: Magiiic\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: admin/dependencies.php:53
+msgid "Activate"
+msgstr "Activer"
+
+#: admin/dependencies.php:67
+msgid "Install"
+msgstr "Installer"
+
+#: admin/dependencies.php:71
+#, php-format
+msgid "Download from %s"
+msgstr "Télécharger depuis %s"
+
+#: admin/dependencies.php:75
+msgid "recommended"
+msgstr "recommandé"
+
+#: admin/dependencies.php:76
+msgid "required"
+msgstr "requis"
+
+#: admin/dependencies.php:83
+#, php-format
+msgid "%s requires these plugins:"
+msgstr "%s requiert ces extensions:"
+
+#: admin/inc/settings-page.php:4
+#, php-format
+msgid "%s settings"
+msgstr "Réglages de %s"
+
+#: admin/inc/settings-page.php:101
+msgid "Recommended plugins"
+msgstr "Extensions recommandées"
+
+#: admin/inc/wppus-page.php:4 admin/settings.php:38
+msgid "Debug"
+msgstr "Débogage"
+
+#: admin/settings.php:16
+msgid "License key"
+msgstr "Clé de license"
+
+#: admin/settings.php:17
+#, php-format
+msgid "Contact %s to get a license key"
+msgstr "Contacter %s pour obtenir une clé de license"
+
+#: admin/settings.php:21
+msgid "Update server"
+msgstr "Serveur de mises à jour"
+
+#: admin/settings.php:22
+msgid "Update server URL"
+msgstr "URL du serveur de mises à jour"
+
+#: admin/settings.php:27
+msgid "Update server API Authentication Key"
+msgstr "Clé d'autentification API du serveur de mises à jour"
+
+#: admin/settings.php:31
+msgid "License Manager Consumer key"
+msgstr ""
+
+#: admin/settings.php:34
+msgid "License Manager Consumer secret"
+msgstr ""
+
+#: admin/settings.php:40
+msgid "Debug area"
+msgstr "Zone de débogage"
+
+#: admin/settings.php:44
+msgid "Tweaks"
+msgstr "Ajustements"
+
+#: admin/settings.php:45
+msgid "Make coffee after login"
+msgstr "Faire le café après la connexion"
+
+#: admin/settings.php:75
+msgid "Settings"
+msgstr "Réglages"
+
+#: admin/updater.php:46
+#, php-format
+msgid "Register on %s to get a license key"
+msgstr "Enregistrez-vous sur %s pour obtenir une clé de license"
+
+#: admin/wppus.php:28
+#, php-format
+msgid "Something went wrong: %s"
+msgstr "Quelque chose s'est mal passé: %s"
