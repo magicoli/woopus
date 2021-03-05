@@ -33,7 +33,8 @@ function WooPUS_order_status_changed( $order_id, $old_status, $new_status ){
       $product_id   = $item->get_product_id(); // the Product id
       $product = wc_get_product( $product_id ); // Get the WC_Product Object
       $package_slug = $product->get_attribute( 'package_slug' );
-      $package_type = 'plugin';
+      if(!$package_slug) $package_slug = $product->get_slug();
+      $package_type = 'plugin'; // we don't handle themes for now but we will
 
       $license = \LicenseManagerForWooCommerce\Repositories\Resources\License::instance()->findBy(
         array(
