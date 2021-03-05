@@ -1,4 +1,4 @@
-# WPPUS Woocommerce integration
+# WooPUS
 * Contributors: magicoli69
 * Donate link: https://paypal.me/magicoli
 * Tags: wppus, plugin update server, WooCommerce, license keys

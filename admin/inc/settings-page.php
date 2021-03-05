@@ -1,22 +1,22 @@
 <?php
-global $wppuswci_dependencies, $wppuswci_recommended, $wppuswci_required;
+global $WooPUS_Dependencies, $WooPUS_Recommended, $WooPUS_Required;
 ?><div class="wrap">
-	<h1><?php echo sprintf(__('%s', 'wppus-wci'), 'WP Plugin Update Server integration'); ?></h1>
+	<h1><?php echo sprintf(__('%s', 'woopus'), 'Plugin Update Server integration'); ?></h1>
 	<!-- <h1>OpenSimulator</h1> -->
   <?php screen_icon(); ?>
 	<form method="post" action="options.php">
-		<?php settings_fields( 'wppuswci' ); ?>
+		<?php settings_fields( 'woopus' ); ?>
 		<table class=form-table>
 <?php
 			// $export_url = esc_url( add_query_arg(
 			//   $export_url
 			// ));
-			if(!get_option('wppuswci_token')) {
-				update_option('wppuswci_token', substr(md5(openssl_random_pseudo_bytes(20)),-20));
+			if(!get_option('WooPUS_token')) {
+				update_option('WooPUS_token', substr(md5(openssl_random_pseudo_bytes(20)),-20));
 			}
 
-			foreach ($wppuswci_options as $category => $options) {
-				do_settings_sections( 'wppuswci_sections' );
+			foreach ($WooPUS_options as $category => $options) {
+				do_settings_sections( 'WooPUS_sections' );
 ?>
       <!-- Menu Categories section -->
 <?php		if($category!='default') { ?>
@@ -36,7 +36,7 @@ global $wppuswci_dependencies, $wppuswci_recommended, $wppuswci_required;
 					$value=get_option($option);
 					$value=$value ? $value : $default;
 					$label=($args['label']) ? $args['label'] : $name;
-					$label="<label for='$option'>" . __("$label", 'wppus-wci') . "</label>";
+					$label="<label for='$option'>" . __("$label", 'woopus') . "</label>";
 					$type=$args['type'];
 					$description=($args['description']) ? "<p id='$option-description' class=description>{$args['description']}</p>" : "";
 					$readonly=($args['readonly']) ? "readonly" : "";
@@ -95,13 +95,13 @@ global $wppuswci_dependencies, $wppuswci_recommended, $wppuswci_required;
 			};
 
 		# Dependencies section
-		if(!empty($wppuswci_recommended)) {
+		if(!empty($WooPUS_Recommended)) {
 		?>
 			<tr><th colspan=2>
-				<h2><?php _e("Recommended plugins", 'wppus-wci');?></h2>
+				<h2><?php _e("Recommended plugins", 'woopus');?></h2>
 			</th></tr>
 		<?php
-			foreach ($wppuswci_recommended as $plugin => $action) {
+			foreach ($WooPUS_Recommended as $plugin => $action) {
 				echo "<tr valign='top'><th scope='row'></th><td>";
 				echo $action;
 				echo "</td></tr>";

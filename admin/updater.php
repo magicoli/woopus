@@ -1,10 +1,10 @@
 <?php
 
-add_action( 'admin_head', 'wppuswci_alter_license_notice', 99, 0 );
-function wppuswci_alter_license_notice() {
-  global $wppus_alter_license_form;
+add_action( 'admin_head', 'WooPUS_alter_license_notice', 99, 0 );
+function WooPUS_alter_license_notice() {
+  global $WooPUSalter_license_form;
 
-  if ( $wppus_alter_license_form['wppus-wci'] ) {
+  if ( $WooPUSalter_license_form['woopus'] ) {
 
     return;
   }
@@ -18,46 +18,46 @@ function wppuswci_alter_license_notice() {
     /* .hidden {
       display: none;
     }
-    #wrap_license_wppus-woocommerce-integration* {
+    #wrap_license_woopus* {
       display: none;
     } */
   </style>
   <script type="text/javascript">
     jQuery(function($) {
 
-      if ($('body').hasClass('wppus-license-form-alter-done-wppus-woocommerce-integration')) {
+      if ($('body').hasClass('wppus-license-form-alter-done-woopus')) {
         return;
       }
 
-      var licenseRow = $( ".plugin-update-tr:has([data-package_slug='wppus-wci'])" );
-      var installRow = $( "[data-slug='wppus-wci']");
+      var licenseRow = $( ".plugin-update-tr:has([data-package_slug='woopus'])" );
+      var installRow = $( "[data-slug='woopus']");
       if(! installRow) return;
 
-      $(".wrap-license[data-package_slug='wppus-wci']").each( function( index, element ) {
+      $(".wrap-license[data-package_slug='woopus']").each( function( index, element ) {
         element = $(element);
 
         if (element.find('.current-license').html().length) {
-          var buttonText = "<?php echo esc_html_e( 'License key', 'wppus-wci' ); ?>";
+          var buttonText = "<?php echo esc_html_e( 'License key', 'woopus' ); ?>";
 
           licenseRow.hide();
-          installRow.find('div.row-actions').append(' <span> | <a class="wppus-license-switch wppus-woocommerce-integration" href="#">' + buttonText + '</a></span>');
+          installRow.find('div.row-actions').append(' <span> | <a class="wppus-license-switch woopus" href="#">' + buttonText + '</a></span>');
         } else {
           licenseRow.show();
-          var RegisterText = "<?php echo sprintf(__('Register on %s to get a license key', 'wppus-wci'), '<a href=https://magiiic.com/wordpress/plugins/wppus-woocommerce-integration-by-magiiic/>Magiiic.com</a>'); ?>";
+          var RegisterText = "<?php echo sprintf(__('Register on %s to get a license key', 'woopus'), '<a href=https://magiiic.com/wordpress/plugins/woopus-by-magiiic/>Magiiic.com</a>'); ?>";
           licenseRow.find('.wrap-license').append( "<p class='getlicense'>" + RegisterText + "</p>" );
         }
       });
 
-      $('.wppus-license-switch.wppus-woocommerce-integration').on('click', function(e) {
+      $('.wppus-license-switch.woopus').on('click', function(e) {
         e.preventDefault();
         licenseRow.toggle();
       });
 
-      $('body').addClass('wppus-license-form-alter-done-wppus-woocommerce-integration');
+      $('body').addClass('wppus-license-form-alter-done-woopus');
     });
 
   </script>
   <?php
 
-  $wppus_alter_license_form['wppus-wci'] = true;
+  $WooPUSalter_license_form['woopus'] = true;
 }

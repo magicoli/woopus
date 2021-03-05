@@ -1,7 +1,7 @@
 <?php
 
-// add_filter('lmfwc_add_license', 'wppuswci_lmfwc_add_license');
-// function wppuswci_lmfwc_add_license($licenseKey, $licenseData = array()) {
+// add_filter('lmfwc_add_license', 'WooPUS_lmfwc_add_license');
+// function WooPUS_lmfwc_add_license($licenseKey, $licenseData = array()) {
 //   $message = "<pre>";
 //   $message .= "licenseKey " . print_r($licenseKey) . " \n";
 //   $message .= "licenseData = " . print_r($licenseData, true);
@@ -11,10 +11,10 @@
 //   $write = fputs( $open, $message );
 //   fclose( $open );
 //
-//   wppuswci_Notice($message);
+//   WooPUS_Notice($message);
 // }
 
-function wppuswci_order_status_changed( $order_id, $old_status, $new_status ){
+function WooPUS_order_status_changed( $order_id, $old_status, $new_status ){
   if( $new_status == "completed" ) {
     // $message = "Order $order_id $new_status\n";
 
@@ -48,7 +48,7 @@ function wppuswci_order_status_changed( $order_id, $old_status, $new_status ){
         // $message .= "License: " . print_r($license, true) . "\n";
         $license_key = $license->getDecryptedLicenseKey();
         $date_expiry = $license->getExpiresAt();
-        $add_license = wppuswci_license_add($license_key, $order_email, $package_slug, array(
+        $add_license = WooPUS_license_add($license_key, $order_email, $package_slug, array(
           'package_type' => $package_type,
           'owner_name' => $owner_name,
           'txn_id' => $txn_id,
@@ -64,7 +64,7 @@ function wppuswci_order_status_changed( $order_id, $old_status, $new_status ){
       }
     }
 
-    // update_option('wppuswci_debug', get_option('wppuswci_debug') . $message . "\n\n" );
+    // update_option('WooPUS_debug', get_option('WooPUS_debug') . $message . "\n\n" );
 
     // $order_id  = $order->get_id(); // Get the order ID
     // // $parent_id = $order->get_parent_id(); // Get the parent order ID (for subscriptions…)
@@ -85,4 +85,4 @@ function wppuswci_order_status_changed( $order_id, $old_status, $new_status ){
     // $billing_country = $order->get_billing_country(); // Customer billing country
   }
 }
-add_action( 'woocommerce_order_status_changed', 'wppuswci_order_status_changed', 10, 3 );
+add_action( 'woocommerce_order_status_changed', 'WooPUS_order_status_changed', 10, 3 );

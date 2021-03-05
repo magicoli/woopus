@@ -18,15 +18,15 @@ require(plugin_dir_path(__FILE__) . 'updater.php');
 // require(plugin_dir_path(__FILE__) . 'woocommerce.php');
 
 // Redirect to settings page after activation
-function wppuswci_activation_redirect( $plugin ) {
+function WooPUS_activation_redirect( $plugin ) {
     if( $plugin == plugin_basename( __FILE__ ) ) {
-        exit( wp_redirect( admin_url( 'admin.php?page=wppus-woocommerce-integration' ) ) );
+        exit( wp_redirect( admin_url( 'admin.php?page=woopus' ) ) );
     }
 }
-add_action( 'activated_plugin', 'wppuswci_activation_redirect' );
+add_action( 'activated_plugin', 'WooPUS_activation_redirect' );
 
-if ( ! class_exists( 'wppuswci_Notice' ) ):
-  class wppuswci_Notice {
+if ( ! class_exists( 'WooPUS_Notice' ) ):
+  class WooPUS_Notice {
     private $message;
     private $css_classes = array( 'notice' );
 
@@ -53,5 +53,5 @@ if ( ! class_exists( 'wppuswci_Notice' ) ):
       <?php
     }
   }
-  $wppuswci_Notice = new wppuswci_Notice();
+  $WooPUS_Notice = new WooPUS_Notice();
 endif;

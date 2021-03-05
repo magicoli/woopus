@@ -5,8 +5,8 @@
 
 if ( ! defined( 'WPINC' ) ) die;
 
-function wppuswci_query($params, $endpoint='wppus-license-api', $server="") {
-  if(!$server) $server = get_option('wppuswci_pus_url');
+function WooPUS_query($params, $endpoint='wppus-license-api', $server="") {
+  if(!$server) $server = get_option('WooPUS_pus_url');
 
   $url = "$server/$endpoint/"; // Replace domain.com with the domain where WP Plugin Update Server is installed.
 
@@ -54,27 +54,27 @@ function wppuswci_query($params, $endpoint='wppus-license-api', $server="") {
 
 ## API Doc https://github.com/froger-me/wp-plugin-update-server/blob/master/licenses.md
 ##
-function wppuswci_license_get_info($key) { // return licence object
+function WooPUS_license_get_info($key) { // return licence object
   $params = array(
   'action'      => 'check',        // Action to perform when calling the License API (required)
   'license_key' => $key, // The key of the license to check (required)
   );
-  return wppuswci_query($params, 'wppus-license-api');
+  return WooPUS_query($params, 'wppus-license-api');
 }
-// $licence_object = wppuswci_license_get_info( get_option( 'license_key_wppus-woocommerce-integration' ) );
+// $licence_object = WooPUS_license_get_info( get_option( 'license_key_woopus' ) );
 
-function wppuswci_license_read($key) { // return licence object
+function WooPUS_license_read($key) { // return licence object
   $params = array(
   'action'       => 'read',         // Action to perform when calling the License API (required)
   // 'id'           => '99',           // The id of the license to read (optional if license_key is provided)
   'license_key'  => $key, // The key of the license to read (optional if id is provided)
-  'api_auth_key' => get_option('wppuswci_pus_api_key'),       // The Private API Authentication Key (required)
+  'api_auth_key' => get_option('WooPUS_pus_api_key'),       // The Private API Authentication Key (required)
   );
-  return wppuswci_query($params, 'wppus-license-api');
+  return WooPUS_query($params, 'wppus-license-api');
 }
-// $licence_object = wppuswci_license_read( get_option( 'license_key_wppus-woocommerce-integration' ) );
+// $licence_object = WooPUS_license_read( get_option( 'license_key_woopus' ) );
 
-function wppuswci_license_add($key, $email, $package_slug, $args=[] ) { // return licence object
+function WooPUS_license_add($key, $email, $package_slug, $args=[] ) { // return licence object
   // $defaults=array(
   //   'expiration' => 365,
   // );
@@ -96,17 +96,17 @@ function wppuswci_license_add($key, $email, $package_slug, $args=[] ) { // retur
   // 'date_expiry'         => '2099-12-31',    // Expiry date of the license - YYY-MM-DD - if omitted, no expiry (optional)
   'package_slug'        => $package_slug,  // The package slug - only alphanumeric characters and dashes are allowed (required)
   'package_type'        => 'plugin',        // Type of package the license is for - one of plugin, theme (required)
-  'api_auth_key' => get_option('wppuswci_pus_api_key'),       // The Private API Authentication Key (required)
+  'api_auth_key' => get_option('WooPUS_pus_api_key'),       // The Private API Authentication Key (required)
   );
   $params = array_merge($params, $args);
-  $result = wppuswci_query($params, 'wppus-license-api');
+  $result = WooPUS_query($params, 'wppus-license-api');
   return $result;
 }
-// $licence_object = wppuswci_license_add( 'test-' . uniqid(), 'user@example.com', 'dummy-package' );
+// $licence_object = WooPUS_license_add( 'test-' . uniqid(), 'user@example.com', 'dummy-package' );
 
-// echo "<pre>wppuswci_license_add\n" . print_r( $data, true ) . "</pre>";
+// echo "<pre>WooPUS_license_add\n" . print_r( $data, true ) . "</pre>";
 
-function wppus_browse() {
+function WooPUSbrowse() {
   $license_query = array(
   'relationship' => 'AND',          // Relationship of the criteria when provided - 'AND or 'OR' - default 'AND' (optional)
   // 'limit'        => '10',           // Limit the number of results - default 10 (optional)

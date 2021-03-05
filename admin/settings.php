@@ -1,46 +1,48 @@
 <?php
 if ( ! defined( 'WPINC' ) ) die;
 
-function wppuswci_register_settings() {
+function WooPUS_register_settings() {
   if ( ! current_user_can( 'manage_options' ) ) {
     $readonly=true;
   }
 
-  // if(!get_option('license_key_wppus-woocommerce-integration')) {
+  // if(!get_option('license_key_woopus')) {
   //   require_once(ABSPATH . '/wp-admin/includes/plugin.php');
-  //   $PluginURI = get_plugin_data(plugin_dir_path(__DIR__) . '/wppus-woocommerce-integration.php', $markup = true, $translate = true )['PluginURI'];
-  //   $description = sprintf(__('Register on %s to get a license key', 'wppus-wci'), '<a href="$PluginURI" target=_blank>' . $PluginURI . '</a>');
+  //   $PluginURI = get_plugin_data(plugin_dir_path(__DIR__) . '/woopus.php', $markup = true, $translate = true )['PluginURI'];
+  //   $description = sprintf(__('Register on %s to get a license key', 'woopus'), '<a href="$PluginURI" target=_blank>' . $PluginURI . '</a>');
   // }
 
-  wppuswci_settings_add_option( 'license_key_wppus-woocommerce-integration', "", array(
-  	'name' => __('License key', 'wppus-wci'),
-  	'description' => sprintf(__('Contact %s to get a license key', 'wppus-wci'), '<a href="https://magiiic.com/" target=_blank>Magiiic</a>'),
+  WooPUS_settings_add_option( 'license_key_woopus', "", array(
+  	'name' => __('License key', 'woopus'),
+  	'description' => sprintf(__('Contact %s to get a license key', 'woopus'), '<a href="https://magiiic.com/" target=_blank>Magiiic</a>'),
     'readonly' => true,
   ));
-  wppuswci_settings_add_option( 'wppuswci_pus_url', '', array(
-  	'name' => __('Update server URL', 'wppus-wci'),
+  WooPUS_settings_add_option( 'WooPUS_pus_url', '', array(
+    'category' => 'WP Plugin Update Server',
+  	'name' => __('Update server URL', 'woopus'),
     'default' => get_home_url(),
   ));
 
-  wppuswci_settings_add_option( 'wppuswci_pus_api_key', '', array(
-  	'name' => __('Update server API Authentication Key', 'wppus-wci'),
+  WooPUS_settings_add_option( 'WooPUS_pus_api_key', '', array(
+    'category' => 'WP Plugin Update Server',
+  	'name' => __('Update server API Authentication Key', 'woopus'),
   ));
 
-  // wppuswci_settings_add_option( 'wppuswci_debug', '', array(
+  // WooPUS_settings_add_option( 'WooPUS_debug', '', array(
   //   'category' => 'Debug',
   //   'type' => 'textarea',
   // 	'name' => 'Debug area'),
   // ));
 }
-add_action( 'admin_init', 'wppuswci_register_settings' );
+add_action( 'admin_init', 'WooPUS_register_settings' );
 
-function wppuswci_display_settings_page()
+function WooPUS_display_settings_page()
 {
-  global $wppuswci_options;
+  global $WooPUS_options;
 	// if ( ! current_user_can( 'manage_options' ) ) {
 	// 		return;
 	// }
-  // new wppuswci_Notice( "This is something. " . uniqid() . ' ' . __FILE__, 'warning' );
+  // new WooPUS_Notice( "This is something. " . uniqid() . ' ' . __FILE__, 'warning' );
   require(plugin_dir_path(__FILE__) . 'inc/settings-page.php');
   if($notices) {
     foreach ($notices as $notice) {
@@ -49,33 +51,33 @@ function wppuswci_display_settings_page()
   }
 }
 
-function wppuswci_settings_link( $links ) {
+function WooPUS_settings_link( $links ) {
 	// Build and escape the URL.
 	$url = esc_url( add_query_arg(
 		'page',
-		'wppus-wci',
+		'woopus',
 		get_admin_url() . 'options-general.php'
 	) );
 	// Create the link.
-	$settings_link = "<a href='$url'>" . __( 'Settings', 'wppus-wci') . '</a>';
+	$settings_link = "<a href='$url'>" . __( 'Settings', 'woopus') . '</a>';
 	// Adds the link to the end of the array.
 	array_push(
 		$links,
 		$settings_link
 	);
 	return $links;
-} //end wppuswci_settings_link()
-add_filter( 'plugin_action_links_wppus-woocommerce-integration/wppus-woocommerce-integration.php', 'wppuswci_settings_link' );
+} //end WooPUS_settings_link()
+add_filter( 'plugin_action_links_woopus/woopus.php', 'WooPUS_settings_link' );
 
-function wppuswci_settings_add_option($option, $default=NULL, $args) {
-    global $wppuswci_options;
+function WooPUS_settings_add_option($option, $default=NULL, $args) {
+    global $WooPUS_options;
     if(empty($option)) return;
 
     if(empty($args['category'])) $args['category'] = 'default';
     if(empty($args['type'])) $args['type'] = 'string';
     if(empty($args['name'])) $args['name'] = $option;
 
-    $wppuswci_options[$args['category']][$option]=$args;
+    $WooPUS_options[$args['category']][$option]=$args;
     add_option( $option, $default);
-    register_setting( 'wppuswci', $option, $args);
+    register_setting( 'woopus', $option, $args);
 }

@@ -1,4 +1,4 @@
-=== WPPUS Woocommerce integration ===
+=== WooPUS ===
 Contributors: magicoli69
 Donate link: https://paypal.me/magicoli
 Tags: wppus, plugin update server, WooCommerce, license keys
@@ -9,7 +9,7 @@ Stable tag: 0.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-WooCommerce integration for WP Plugin Update Server
+WooCommerce integration for Plugin Update Server
 
 == Description ==
 
@@ -36,7 +36,7 @@ this is covered by their documentation
 (https://github.com/froger-me/wp-plugin-update-server).
 
 1. Download and install this plugin via WP interface
-   or unzip to /wp-content/plugins/wppus-woocommerce-integration
+   or unzip to /wp-content/plugins/woopus
 2. Get your "Private API Authentication Key" from "WP Plugin Update Server"
    admin menu > "Licenses" tab
 3. Create a Generator in "License Manager" admin menu > "Generator"

@@ -74,7 +74,7 @@ if ( !class_exists('Puc_v4p9_Plugin_Ui', false) ):
 					$viewDetailsLink = sprintf('<a href="%s" class="thickbox open-plugin-details-modal" aria-label="%s" data-title="%s">%s</a>',
 						esc_url(network_admin_url('plugin-install.php?tab=plugin-information&plugin=' . urlencode($this->updateChecker->slug) .
 							'&TB_iframe=true&width=600&height=550')),
-						esc_attr(sprintf(__('More information about %s'), $pluginData['Name'])),
+						esc_attr(sprintf(__('More information about %s', 'woopus'), $pluginData['Name'])),
 						esc_attr($pluginData['Name']),
 						$linkText
 					);
