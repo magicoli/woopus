@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WPPUS WooCommerce Integration\n"
-"POT-Creation-Date: 2021-03-05 10:38-0400\n"
-"PO-Revision-Date: 2021-03-05 10:50-0400\n"
+"POT-Creation-Date: 2021-03-05 10:52-0400\n"
+"PO-Revision-Date: 2021-03-05 10:52-0400\n"
 "Last-Translator: Olivier van Helden <olivier@van-helden.net>\n"
 "Language-Team: Magiiic\n"
 "Language: fr\n"
@@ -48,10 +48,6 @@ msgstr "Réglages de %s"
 msgid "Recommended plugins"
 msgstr "Extensions recommandées"
 
-#: admin/inc/wppus-page.php:4 admin/settings.php:38
-msgid "Debug"
-msgstr "Débogage"
-
 #: admin/settings.php:16
 msgid "License key"
 msgstr "Clé de license"
@@ -73,27 +69,15 @@ msgstr "URL du serveur de mises à jour"
 msgid "Update server API Authentication Key"
 msgstr "Clé d'autentification API du serveur de mises à jour"
 
-#: admin/settings.php:31
-msgid "License Manager Consumer key"
-msgstr ""
-
-#: admin/settings.php:34
-msgid "License Manager Consumer secret"
-msgstr ""
-
-#: admin/settings.php:40
-msgid "Debug area"
-msgstr "Zone de débogage"
-
-#: admin/settings.php:44
+#: admin/settings.php:37
 msgid "Tweaks"
 msgstr "Ajustements"
 
-#: admin/settings.php:45
+#: admin/settings.php:38
 msgid "Make coffee after login"
 msgstr "Faire le café après la connexion"
 
-#: admin/settings.php:75
+#: admin/settings.php:68
 msgid "Settings"
 msgstr "Réglages"
 
@@ -106,3 +90,9 @@ msgstr "Enregistrez-vous sur %s pour obtenir une clé de license"
 #, php-format
 msgid "Something went wrong: %s"
 msgstr "Quelque chose s'est mal passé: %s"
+
+#~ msgid "Debug"
+#~ msgstr "Débogage"
+
+#~ msgid "Debug area"
+#~ msgstr "Zone de débogage"

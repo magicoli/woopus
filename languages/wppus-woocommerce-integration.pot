@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WPPUS WooCommerce Integration\n"
-"POT-Creation-Date: 2021-03-05 10:49-0400\n"
+"POT-Creation-Date: 2021-03-05 10:52-0400\n"
 "PO-Revision-Date: 2021-02-25 23:31-0400\n"
 "Last-Translator: Olivier van Helden <olivier@van-helden.net>\n"
 "Language-Team: magiiic\n"
@@ -50,10 +50,6 @@ msgstr ""
 
 #: admin/inc/settings-page.php:101
 msgid "Recommended plugins"
-msgstr ""
-
-#: admin/inc/wppus-page.php:4
-msgid "Debug"
 msgstr ""
 
 #: admin/settings.php:16
