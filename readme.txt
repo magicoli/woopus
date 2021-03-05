@@ -57,6 +57,19 @@ There is only one question that matters, and the answer is 42.
 
 == Changelog ==
 
+= 0.1 =
+* new name WooPUS
+* added WooCommerce Subscriptions to recommended plugins
+* added settings for Licence Manager key/secret pair
+* added License Manager for WooCommerce in dependecies
+* updated readme
+* fixed translations not loaded, wrong callback
+* moved setting menu as WooCommerce submenu
+* removed demo setting
+* removed License Manger API settings
+* kinda working, pretty cool
+* admin notice function
+
 = 0.0.2 =
 * added update libraries
 * added admin files
