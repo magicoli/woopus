@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WPPUS WooCommerce Integration\n"
-"POT-Creation-Date: 2021-03-05 10:52-0400\n"
+"POT-Creation-Date: 2021-03-05 12:18-0400\n"
 "PO-Revision-Date: 2021-02-25 23:31-0400\n"
 "Last-Translator: Olivier van Helden <olivier@van-helden.net>\n"
 "Language-Team: magiiic\n"
@@ -17,39 +17,47 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: lib\n"
 
-#: admin/dependencies.php:53
+#: admin/dependencies.php:60
 msgid "Activate"
 msgstr ""
 
-#: admin/dependencies.php:67
+#: admin/dependencies.php:74
 msgid "Install"
 msgstr ""
 
-#: admin/dependencies.php:71
+#: admin/dependencies.php:78
 #, php-format
 msgid "Download from %s"
 msgstr ""
 
-#: admin/dependencies.php:75
+#: admin/dependencies.php:82
 msgid "recommended"
 msgstr ""
 
-#: admin/dependencies.php:76
+#: admin/dependencies.php:83
 msgid "required"
 msgstr ""
 
-#: admin/dependencies.php:83
+#: admin/dependencies.php:90
 #, php-format
 msgid "%s requires these plugins:"
 msgstr ""
 
 #: admin/inc/settings-page.php:4
 #, php-format
-msgid "%s settings"
+msgid "%s"
 msgstr ""
 
 #: admin/inc/settings-page.php:101
 msgid "Recommended plugins"
+msgstr ""
+
+#: admin/menus.php:15
+msgid "WP Plugin Update Server"
+msgstr ""
+
+#: admin/menus.php:16
+msgid "WPPUS integration"
 msgstr ""
 
 #: admin/settings.php:16
@@ -62,26 +70,14 @@ msgid "Contact %s to get a license key"
 msgstr ""
 
 #: admin/settings.php:21
-msgid "Update server"
-msgstr ""
-
-#: admin/settings.php:22
 msgid "Update server URL"
 msgstr ""
 
-#: admin/settings.php:27
+#: admin/settings.php:26
 msgid "Update server API Authentication Key"
 msgstr ""
 
-#: admin/settings.php:37
-msgid "Tweaks"
-msgstr ""
-
-#: admin/settings.php:38
-msgid "Make coffee after login"
-msgstr ""
-
-#: admin/settings.php:68
+#: admin/settings.php:60
 msgid "Settings"
 msgstr ""
 

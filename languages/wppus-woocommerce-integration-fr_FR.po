@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WPPUS WooCommerce Integration\n"
-"POT-Creation-Date: 2021-03-05 10:52-0400\n"
-"PO-Revision-Date: 2021-03-05 10:52-0400\n"
+"POT-Creation-Date: 2021-03-05 12:18-0400\n"
+"PO-Revision-Date: 2021-03-05 12:20-0400\n"
 "Last-Translator: Olivier van Helden <olivier@van-helden.net>\n"
 "Language-Team: Magiiic\n"
 "Language: fr\n"
@@ -13,40 +13,50 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: admin/dependencies.php:53
+#: admin/dependencies.php:60
 msgid "Activate"
 msgstr "Activer"
 
-#: admin/dependencies.php:67
+#: admin/dependencies.php:74
 msgid "Install"
 msgstr "Installer"
 
-#: admin/dependencies.php:71
+#: admin/dependencies.php:78
 #, php-format
 msgid "Download from %s"
 msgstr "Télécharger depuis %s"
 
-#: admin/dependencies.php:75
+#: admin/dependencies.php:82
 msgid "recommended"
 msgstr "recommandé"
 
-#: admin/dependencies.php:76
+#: admin/dependencies.php:83
 msgid "required"
 msgstr "requis"
 
-#: admin/dependencies.php:83
+#: admin/dependencies.php:90
 #, php-format
 msgid "%s requires these plugins:"
 msgstr "%s requiert ces extensions:"
 
 #: admin/inc/settings-page.php:4
 #, php-format
-msgid "%s settings"
-msgstr "Réglages de %s"
+msgid "%s"
+msgstr "%s"
 
 #: admin/inc/settings-page.php:101
 msgid "Recommended plugins"
 msgstr "Extensions recommandées"
+
+#: admin/menus.php:15
+#, fuzzy
+#| msgid "Update server"
+msgid "WP Plugin Update Server"
+msgstr "Serveur de mises à jour"
+
+#: admin/menus.php:16
+msgid "WPPUS integration"
+msgstr "Intégration WPPUS"
 
 #: admin/settings.php:16
 msgid "License key"
@@ -58,26 +68,14 @@ msgid "Contact %s to get a license key"
 msgstr "Contacter %s pour obtenir une clé de license"
 
 #: admin/settings.php:21
-msgid "Update server"
-msgstr "Serveur de mises à jour"
-
-#: admin/settings.php:22
 msgid "Update server URL"
 msgstr "URL du serveur de mises à jour"
 
-#: admin/settings.php:27
+#: admin/settings.php:26
 msgid "Update server API Authentication Key"
 msgstr "Clé d'autentification API du serveur de mises à jour"
 
-#: admin/settings.php:37
-msgid "Tweaks"
-msgstr "Ajustements"
-
-#: admin/settings.php:38
-msgid "Make coffee after login"
-msgstr "Faire le café après la connexion"
-
-#: admin/settings.php:68
+#: admin/settings.php:60
 msgid "Settings"
 msgstr "Réglages"
 
@@ -90,6 +88,15 @@ msgstr "Enregistrez-vous sur %s pour obtenir une clé de license"
 #, php-format
 msgid "Something went wrong: %s"
 msgstr "Quelque chose s'est mal passé: %s"
+
+#~ msgid "%s settings"
+#~ msgstr "Réglages de %s"
+
+#~ msgid "Tweaks"
+#~ msgstr "Ajustements"
+
+#~ msgid "Make coffee after login"
+#~ msgstr "Faire le café après la connexion"
 
 #~ msgid "Debug"
 #~ msgstr "Débogage"
