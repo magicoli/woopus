@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WPPUS WooCommerce Integration\n"
-"POT-Creation-Date: 2021-03-05 12:18-0400\n"
-"PO-Revision-Date: 2021-03-05 12:20-0400\n"
+"POT-Creation-Date: 2021-03-05 12:25-0400\n"
+"PO-Revision-Date: 2021-03-05 12:26-0400\n"
 "Last-Translator: Olivier van Helden <olivier@van-helden.net>\n"
 "Language-Team: Magiiic\n"
 "Language: fr\n"
@@ -48,15 +48,11 @@ msgstr "%s"
 msgid "Recommended plugins"
 msgstr "Extensions recommandées"
 
-#: admin/menus.php:15
+#: admin/menus.php:15 admin/menus.php:16
 #, fuzzy
 #| msgid "Update server"
-msgid "WP Plugin Update Server"
+msgid "Plugin Update Server"
 msgstr "Serveur de mises à jour"
-
-#: admin/menus.php:16
-msgid "WPPUS integration"
-msgstr "Intégration WPPUS"
 
 #: admin/settings.php:16
 msgid "License key"
@@ -67,15 +63,15 @@ msgstr "Clé de license"
 msgid "Contact %s to get a license key"
 msgstr "Contacter %s pour obtenir une clé de license"
 
-#: admin/settings.php:21
+#: admin/settings.php:22
 msgid "Update server URL"
 msgstr "URL du serveur de mises à jour"
 
-#: admin/settings.php:26
+#: admin/settings.php:28
 msgid "Update server API Authentication Key"
 msgstr "Clé d'autentification API du serveur de mises à jour"
 
-#: admin/settings.php:60
+#: admin/settings.php:62
 msgid "Settings"
 msgstr "Réglages"
 
@@ -88,6 +84,9 @@ msgstr "Enregistrez-vous sur %s pour obtenir une clé de license"
 #, php-format
 msgid "Something went wrong: %s"
 msgstr "Quelque chose s'est mal passé: %s"
+
+#~ msgid "WPPUS integration"
+#~ msgstr "Intégration WPPUS"
 
 #~ msgid "%s settings"
 #~ msgstr "Réglages de %s"
