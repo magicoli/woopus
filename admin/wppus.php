@@ -106,7 +106,7 @@ function WooPUS_license_add($key, $email, $package_slug, $args=[] ) { // return 
 
 // echo "<pre>WooPUS_license_add\n" . print_r( $data, true ) . "</pre>";
 
-function WooPUSbrowse() {
+function WooPUS_browse() {
   $license_query = array(
   'relationship' => 'AND',          // Relationship of the criteria when provided - 'AND or 'OR' - default 'AND' (optional)
   // 'limit'        => '10',           // Limit the number of results - default 10 (optional)

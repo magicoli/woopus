@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:     WooPUS
+ * Plugin Name:     WooPUS - WooCommerce Plugin Update Server integration
  * Plugin URI:      https://git.magiiic.com/wordpress/woopus
  * Description:     WooCommerce integration for WP Plugin Update Server
  * Author:          Magiiic
@@ -10,12 +10,17 @@
  * Version:         0.1
  *
  * @package         WPPUS_Woocommerce_Integration
+ *
+ * Icon1x: https://git.magiiic.com/wordpress/woopus/-/raw/master/assets/icon-128x128.jpg
+ * Icon2x: https://git.magiiic.com/wordpress/woopus/-/raw/master/assets/icon-256x256.jpg
+ * BannerHigh: https://git.magiiic.com/wordpress/woopus/-/raw/master/assets/banner-1544x500.jpg
+ * BannerLow: https://git.magiiic.com/wordpress/woopus/-/raw/master/assets/banner-772x250.jpg
+ * Screenshot-1: https://git.magiiic.com/wordpress/woopus/-/raw/master/assets/screenshot-1.jpg
  */
 
 // Your code starts here.
 
 if ( ! defined( 'WPINC' ) ) die;
-
 
 // function WooPUS_load_plugin_css() {
 // 	wp_enqueue_style( 'cdt', plugin_dir_url( __FILE__ ) . 'style.css' );

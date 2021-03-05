@@ -2,13 +2,15 @@
 
 add_action( 'admin_head', 'WooPUS_alter_license_notice', 99, 0 );
 function WooPUS_alter_license_notice() {
-  global $WooPUSalter_license_form;
+  global $WooPUS_alter_license_form;
+  if ( $WooPUS_alter_license_form['woopus'] ) return;
 
-  if ( $WooPUSalter_license_form['woopus'] ) {
-
-    return;
-  }
-
+  $slug = "woopus";
+  $plugin_data = get_plugin_data(WP_PLUGIN_DIR . "/$slug/$slug.php");
+  $plugin_data_slug = sanitize_title($plugin_data['Name']);
+  $StoreURI = $plugin_data['PluginURI'];
+  $StoreName = $plugin_data['AuthorName'];
+  $RegisterText = sprintf(__('Get a license key on %s', 'woopus'), "<a href=$StoreURI' target=_blank>$StoreName</a>");
   ?>
   <style>
     /* .button.wppus-license-switch {
@@ -30,7 +32,7 @@ function WooPUS_alter_license_notice() {
       }
 
       var licenseRow = $( ".plugin-update-tr:has([data-package_slug='woopus'])" );
-      var installRow = $( "[data-slug='woopus']");
+      var installRow = $( "[data-slug='<?= $plugin_data_slug ?>']");
       if(! installRow) return;
 
       $(".wrap-license[data-package_slug='woopus']").each( function( index, element ) {
@@ -43,8 +45,7 @@ function WooPUS_alter_license_notice() {
           installRow.find('div.row-actions').append(' <span> | <a class="wppus-license-switch woopus" href="#">' + buttonText + '</a></span>');
         } else {
           licenseRow.show();
-          var RegisterText = "<?php echo sprintf(__('Register on %s to get a license key', 'woopus'), '<a href=https://magiiic.com/wordpress/plugins/woopus-by-magiiic/>Magiiic.com</a>'); ?>";
-          licenseRow.find('.wrap-license').append( "<p class='getlicense'>" + RegisterText + "</p>" );
+          licenseRow.find('.wrap-license').append( "<p class='getlicense'><?=$RegisterText?></p>" );
         }
       });
 
@@ -59,5 +60,5 @@ function WooPUS_alter_license_notice() {
   </script>
   <?php
 
-  $WooPUSalter_license_form['woopus'] = true;
+  $WooPUS_alter_license_form['woopus'] = true;
 }
