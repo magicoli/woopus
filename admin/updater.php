@@ -10,7 +10,7 @@ function WooPUS_alter_license_notice() {
   $plugin_data_slug = sanitize_title($plugin_data['Name']);
   $StoreURI = $plugin_data['PluginURI'];
   $StoreName = $plugin_data['AuthorName'];
-  $RegisterText = sprintf(__('Get a license key on %s', 'woopus'), "<a href=$StoreURI' target=_blank>$StoreName</a>");
+  $RegisterText = sprintf(__('Get a license key on %s', 'woopus'), "<a href='$StoreURI' target=_blank>$StoreName</a>");
   ?>
   <style>
     /* .button.wppus-license-switch {
