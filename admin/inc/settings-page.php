@@ -1,7 +1,7 @@
 <?php
 global $WooPUS_Dependencies, $WooPUS_Recommended, $WooPUS_Required;
 ?><div class="wrap">
-	<h1><?php echo sprintf(__('%s', 'woopus'), 'Plugin Update Server integration'); ?></h1>
+	<h1><?php echo sprintf(__('%s - WooCommerce Plugin Update Server integration', 'woopus'), 'WooPUS'); ?></h1>
 	<!-- <h1>OpenSimulator</h1> -->
   <?php screen_icon(); ?>
 	<form method="post" action="options.php">

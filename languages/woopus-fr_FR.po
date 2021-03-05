@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WPPUS WooCommerce Integration\n"
-"POT-Creation-Date: 2021-03-05 12:25-0400\n"
-"PO-Revision-Date: 2021-03-05 12:26-0400\n"
+"POT-Creation-Date: 2021-03-05 13:36-0400\n"
+"PO-Revision-Date: 2021-03-05 13:38-0400\n"
 "Last-Translator: Olivier van Helden <olivier@van-helden.net>\n"
 "Language-Team: Magiiic\n"
 "Language: fr\n"
@@ -41,18 +41,16 @@ msgstr "%s requiert ces extensions:"
 
 #: admin/inc/settings-page.php:4
 #, php-format
-msgid "%s"
-msgstr "%s"
+msgid "%s - WooCommerce Plugin Update Server integration"
+msgstr "%s - Intégration WooCommerce pour serveur de mises à jour d'extensions"
 
 #: admin/inc/settings-page.php:101
 msgid "Recommended plugins"
 msgstr "Extensions recommandées"
 
 #: admin/menus.php:15 admin/menus.php:16
-#, fuzzy
-#| msgid "Update server"
-msgid "Plugin Update Server"
-msgstr "Serveur de mises à jour"
+msgid "WooPus"
+msgstr ""
 
 #: admin/settings.php:16
 msgid "License key"
@@ -84,6 +82,14 @@ msgstr "Enregistrez-vous sur %s pour obtenir une clé de license"
 #, php-format
 msgid "Something went wrong: %s"
 msgstr "Quelque chose s'est mal passé: %s"
+
+#~ msgid "%s"
+#~ msgstr "%s"
+
+#, fuzzy
+#~| msgid "Update server"
+#~ msgid "Plugin Update Server"
+#~ msgstr "Serveur de mises à jour"
 
 #~ msgid "WPPUS integration"
 #~ msgstr "Intégration WPPUS"
