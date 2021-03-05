@@ -46,5 +46,5 @@ function WooPUS_load_textdomain() {
 	$textdomain = 'woopus';
 	$result = load_plugin_textdomain( $textdomain, false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 }
-add_action( 'init', 'bndtls_load_textdomain' );
+add_action( 'init', 'WooPUS_load_textdomain' );
 // WooPUS_load_textdomain();
