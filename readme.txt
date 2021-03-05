@@ -57,6 +57,10 @@ There is only one question that matters, and the answer is 42.
 
 == Changelog ==
 
+= 0.1.5 =
+* cleanup test files
+* exclude development and source files from .zip release
+
 = 0.1.4 =
 * added constants for common strings
 * fixed WC menu name
