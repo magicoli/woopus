@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WPPUS WooCommerce Integration\n"
-"POT-Creation-Date: 2021-03-05 13:36-0400\n"
+"POT-Creation-Date: 2021-03-05 14:43-0400\n"
 "PO-Revision-Date: 2021-02-25 23:31-0400\n"
 "Last-Translator: Olivier van Helden <olivier@van-helden.net>\n"
 "Language-Team: magiiic\n"
@@ -52,10 +52,6 @@ msgstr ""
 msgid "Recommended plugins"
 msgstr ""
 
-#: admin/menus.php:15 admin/menus.php:16
-msgid "WooPus"
-msgstr ""
-
 #: admin/settings.php:16
 msgid "License key"
 msgstr ""
@@ -77,9 +73,9 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: admin/updater.php:46
+#: admin/updater.php:13
 #, php-format
-msgid "Register on %s to get a license key"
+msgid "Get a license key on %s"
 msgstr ""
 
 #: admin/wppus.php:28

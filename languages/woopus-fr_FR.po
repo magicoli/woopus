@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WPPUS WooCommerce Integration\n"
-"POT-Creation-Date: 2021-03-05 13:36-0400\n"
-"PO-Revision-Date: 2021-03-05 13:38-0400\n"
+"POT-Creation-Date: 2021-03-05 14:43-0400\n"
+"PO-Revision-Date: 2021-03-05 14:44-0400\n"
 "Last-Translator: Olivier van Helden <olivier@van-helden.net>\n"
 "Language-Team: Magiiic\n"
 "Language: fr\n"
@@ -42,15 +42,11 @@ msgstr "%s requiert ces extensions:"
 #: admin/inc/settings-page.php:4
 #, php-format
 msgid "%s - WooCommerce Plugin Update Server integration"
-msgstr "%s - Intégration WooCommerce pour serveur de mises à jour d'extensions"
+msgstr "%s - Intégration WooCommerce pour serveur de mises à jour"
 
 #: admin/inc/settings-page.php:101
 msgid "Recommended plugins"
 msgstr "Extensions recommandées"
-
-#: admin/menus.php:15 admin/menus.php:16
-msgid "WooPus"
-msgstr ""
 
 #: admin/settings.php:16
 msgid "License key"
@@ -73,15 +69,18 @@ msgstr "Clé d'autentification API du serveur de mises à jour"
 msgid "Settings"
 msgstr "Réglages"
 
-#: admin/updater.php:46
+#: admin/updater.php:13
 #, php-format
-msgid "Register on %s to get a license key"
-msgstr "Enregistrez-vous sur %s pour obtenir une clé de license"
+msgid "Get a license key on %s"
+msgstr "Obtenez une clé de license sur %s"
 
 #: admin/wppus.php:28
 #, php-format
 msgid "Something went wrong: %s"
 msgstr "Quelque chose s'est mal passé: %s"
+
+#~ msgid "Register on %s to get a license key"
+#~ msgstr "Enregistrez-vous sur %s pour obtenir une clé de license"
 
 #~ msgid "%s"
 #~ msgstr "%s"

@@ -12,8 +12,8 @@ global $WooPUS_options;
 function WooPUS_register_settings_pages() {
   add_submenu_page(
     'woocommerce',  // parent_slug
-    __('WooPus', 'woopus'), // $page_title
-    __('WooPus', 'woopus'), // menu_title
+    'WooPus', // $page_title
+    'WooPus', // menu_title
     'manage_woocommerce', // capability
     'woopus', // menu_slug
     'WooPUS_display_settings_page', // callable function
