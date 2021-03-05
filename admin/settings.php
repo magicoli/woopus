@@ -14,7 +14,7 @@ function WooPUS_register_settings() {
 
   WooPUS_settings_add_option( 'license_key_woopus', "", array(
   	'name' => __('License key', 'woopus'),
-  	'description' => sprintf(__('Contact %s to get a license key', 'woopus'), '<a href="https://magiiic.com/" target=_blank>Magiiic</a>'),
+  	'description' => WOOPUS_REGISTER_TEXT,
     'readonly' => true,
   ));
   WooPUS_settings_add_option( 'WooPUS_pus_url', '', array(
