@@ -1,7 +1,7 @@
 <?php
 global $wppuswci_dependencies, $wppuswci_recommended, $wppuswci_required;
 ?><div class="wrap">
-	<h1><?php echo sprintf(__('%s settings', 'wppus-wci'), 'WPPUS Woocommerce integration'); ?></h1>
+	<h1><?php echo sprintf(__('%s', 'wppus-wci'), 'WP Plugin Update Server integration'); ?></h1>
 	<!-- <h1>OpenSimulator</h1> -->
   <?php screen_icon(); ?>
 	<form method="post" action="options.php">
@@ -111,5 +111,4 @@ global $wppuswci_dependencies, $wppuswci_recommended, $wppuswci_required;
 		</table>
 		<?php if ( current_user_can( 'manage_options' ) ) submit_button(); ?>
 	</form>
-	<?php include('wppus-page.php'); ?>
 </div>

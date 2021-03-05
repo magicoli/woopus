@@ -18,7 +18,6 @@ function wppuswci_register_settings() {
     'readonly' => true,
   ));
   wppuswci_settings_add_option( 'wppuswci_pus_url', '', array(
-    'category' => __('Update server', 'wppus-wci'),
   	'name' => __('Update server URL', 'wppus-wci'),
     'default' => get_home_url(),
   ));
@@ -32,13 +31,6 @@ function wppuswci_register_settings() {
   //   'type' => 'textarea',
   // 	'name' => 'Debug area'),
   // ));
-
-  wppuswci_settings_add_option('wppuswci_coffee', "", array(
-    'category' => __('Tweaks', 'wppus-wci'),
-    'name' => __('Make coffee after login', 'wppus-wci'),
-    'type'=>'boolean',
-    'readonly' => $readonly,
-  ));
 }
 add_action( 'admin_init', 'wppuswci_register_settings' );
 
