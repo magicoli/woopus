@@ -27,18 +27,11 @@ function wppuswci_register_settings() {
   	'name' => __('Update server API Authentication Key', 'wppus-wci'),
   ));
 
-  wppuswci_settings_add_option( 'wppuswci_lm_key', '', array(
-  	'name' => __('License Manager Consumer key', 'wppus-wci'),
-  ));
-  wppuswci_settings_add_option( 'wppuswci_lm_secret', '', array(
-  	'name' => __('License Manager Consumer secret', 'wppus-wci'),
-  ));
-
-  wppuswci_settings_add_option( 'wppuswci_debug', '', array(
-    'category' => __('Debug', 'wppus-wci'),
-    'type' => 'textarea',
-  	'name' => __('Debug area', 'wppus-wci'),
-  ));
+  // wppuswci_settings_add_option( 'wppuswci_debug', '', array(
+  //   'category' => 'Debug',
+  //   'type' => 'textarea',
+  // 	'name' => 'Debug area'),
+  // ));
 
   wppuswci_settings_add_option('wppuswci_coffee', "", array(
     'category' => __('Tweaks', 'wppus-wci'),
