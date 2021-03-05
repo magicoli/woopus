@@ -57,6 +57,9 @@ There is only one question that matters, and the answer is 42.
 
 == Changelog ==
 
+= 0.1.2 =
+* fix store url in registration notice
+
 = 0.1.1 =
 * added banners
 * added second part to title
