@@ -57,6 +57,9 @@ There is only one question that matters, and the answer is 42.
 
 == Changelog ==
 
+= 0.1.7 =
+* fix wppus-hide-licence-warnings.js conflict with other plugins using it
+
 = 0.1.6 =
 * fix get_plugin_data possible crash in init
 * load js with wp queue instead of hardcoded
