@@ -22,11 +22,6 @@
 
 if ( ! defined( 'WPINC' ) ) die;
 
-// function WooPUS_load_plugin_css() {
-// 	wp_enqueue_style( 'cdt', plugin_dir_url( __FILE__ ) . 'style.css' );
-// }
-// add_action( 'wp_enqueue_scripts', 'WooPUS_load_plugin_css' );
-
 if(is_admin()) {
 	require_once __DIR__ . '/admin/init.php';
 	// require_once __DIR__ . '/admin/wp-dependencies.php';
@@ -46,6 +41,7 @@ $WooPUS_updater = new WP_Package_Updater(
 	wp_normalize_path( plugin_dir_path( __FILE__ ) ),
 	true
 );
+
 
 function WooPUS_load_textdomain() {
 	$textdomain = 'woopus';

@@ -1,0 +1,24 @@
+.woopus-settings > div {
+    display: flex;
+    width: 100%;
+}
+.woopus-settings > div > div {
+  margin-right: 10px;
+  width: 100%;
+}
+.woopus pre {
+  background: lightgrey;
+  width: 100%;
+  padding: 1em;
+}
+/*
+a[href^="http://"]:not([href^="http://monty.magiiic.com"]):after,
+a[href^="https://"]:not([href^="https://monty.magiiic.com"]):after {
+ content: "" url('/w/wp-content/plugins/publishpress-pro/vendor/alledia/wordpress-plugin-framework/src/assets/lib/font-awesome-v5.2.0/svgs/solid/external-link-alt.svg');
+ display: inline-block;
+ color: blue;
+ width: 1em;
+ height: 1em;
+ padding-left:0.25em;
+}
+ */

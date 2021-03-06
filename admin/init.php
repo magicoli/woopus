@@ -40,6 +40,11 @@ require(plugin_dir_path(__FILE__) . 'menus.php');
 require(plugin_dir_path(__FILE__) . 'settings.php');
 // require(plugin_dir_path(__FILE__) . 'woocommerce.php');
 
+function WooPUS_load_plugin_css() {
+	wp_enqueue_style( WOOPUS_SLUG . '-admin', plugin_dir_url( __FILE__ ) . 'admin.css' );
+}
+add_action( 'admin_enqueue_scripts', 'WooPUS_load_plugin_css' );
+
 // Redirect to settings page after activation
 function WooPUS_activation_redirect( $plugin ) {
     if( $plugin == plugin_basename( __FILE__ ) ) {
