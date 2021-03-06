@@ -9,22 +9,33 @@
 if ( ! defined( 'WPINC' ) ) die;
 
 if ( ! defined( 'WOOPUS_SLUG' ) ) define('WOOPUS_SLUG', 'woopus' );
-$plugin_data = get_plugin_data(WP_PLUGIN_DIR . "/" . WOOPUS_SLUG .'/' . WOOPUS_SLUG .'.php');
+
+$plugin_data = get_file_data(WP_PLUGIN_DIR . "/" . WOOPUS_SLUG .'/' . WOOPUS_SLUG .'.php', array(
+  'Name' => 'Plugin Name',
+  'PluginURI' => 'Plugin URI',
+  'Version' => 'Version',
+  'Description' => 'Description',
+  'Author' => 'Author',
+  'AuthorURI' => 'Author URI',
+  'TextDomain' => 'Text Domain',
+  'DomainPath' => 'Domain Path',
+  'Network' => 'Network',
+));
 if ( ! defined( 'WOOPUS_PLUGIN_NAME' ) ) define('WOOPUS_PLUGIN_NAME', $plugin_data['Name'] );
 if ( ! defined( 'WOOPUS_SHORTNAME' ) ) define('WOOPUS_SHORTNAME', preg_replace('/ - .*/', '', WOOPUS_PLUGIN_NAME ) );
 if ( ! defined( 'WOOPUS_PLUGIN_URI' ) ) define('WOOPUS_PLUGIN_URI', $plugin_data['PluginURI'] );
-if ( ! defined( 'WOOPUS_AUTHOR_NAME' ) ) define('WOOPUS_AUTHOR_NAME', $plugin_data['AuthorName'] );
+if ( ! defined( 'WOOPUS_AUTHOR_NAME' ) ) define('WOOPUS_AUTHOR_NAME', $plugin_data['Author'] );
+if ( ! defined( 'WOOPUS_TXDOM' ) ) define('WOOPUS_TXDOM', ($plugin_data['TextDomain']) ? $plugin_data['TextDomain'] : WOOPUS_SLUG );
 if ( ! defined( 'WOOPUS_DATA_SLUG' ) ) define('WOOPUS_DATA_SLUG', sanitize_title(WOOPUS_PLUGIN_NAME) );
-$link = "<a href=" . WOOPUS_PLUGIN_URI . " target=_blank>" . WOOPUS_AUTHOR_NAME . "</a>";
-if ( ! defined( 'WOOPUS_REGISTER_TEXT' ) ) define('WOOPUS_REGISTER_TEXT', sprintf(__('Get a license key on %s', 'woopus'), $link) );
+if ( ! defined( 'WOOPUS_STORE_LINK' ) ) define('WOOPUS_STORE_LINK', "<a href=" . WOOPUS_PLUGIN_URI . " target=_blank>" . WOOPUS_SHORTNAME . "</a>");
+/* translators: %s is replaced by the name of the plugin, untranslated */
+if ( ! defined( 'WOOPUS_REGISTER_TEXT' ) ) define('WOOPUS_REGISTER_TEXT', sprintf(__('Get a license key on %s website', WOOPUS_TXDOM), WOOPUS_STORE_LINK) );
 
 require_once(plugin_dir_path(__FILE__) . 'classes.php');
 
 require(plugin_dir_path(__FILE__) . 'dependencies.php');
 require(plugin_dir_path(__FILE__) . 'menus.php');
 require(plugin_dir_path(__FILE__) . 'settings.php');
-require(plugin_dir_path(__FILE__) . 'updater.php');
-// require(plugin_dir_path(__FILE__) . 'wp-plugin-update-server-api.php');
 // require(plugin_dir_path(__FILE__) . 'woocommerce.php');
 
 // Redirect to settings page after activation
@@ -35,6 +46,8 @@ function WooPUS_activation_redirect( $plugin ) {
 }
 add_action( 'activated_plugin', 'WooPUS_activation_redirect' );
 
+// Admin notifications
+//
 if ( ! class_exists( 'WooPUS_Notice' ) ):
   class WooPUS_Notice {
     private $message;
@@ -47,10 +60,6 @@ if ( ! class_exists( 'WooPUS_Notice' ) ):
 
       if($result) $this->css_classes[] = "notice-$result";
       if($dismiss) $this->css_classes[] = "is-dismissible";
-
-      // if( ! empty( $css_classes ) && is_array( $css_classes ) ) {
-      // 	$this->css_classes = array_merge( $this->css_classes, $css_classes );
-      // }
 
       add_action( 'admin_notices', array( $this, 'display_admin_notice' ) );
     }
@@ -65,3 +74,18 @@ if ( ! class_exists( 'WooPUS_Notice' ) ):
   }
   $WooPUS_Notice = new WooPUS_Notice();
 endif;
+
+// Fix license key warning on plugins page if there is a license key
+//
+add_action( 'admin_head', 'woopus_alter_license_notice', 99, 0 );
+function woopus_alter_license_notice() {
+  global $woopus_alter_license_form;
+  if ( $woopus_alter_license_form ) return;
+
+  $handle = WOOPUS_SLUG . '/js/wppus-hide-licence-warnings';
+  $js = plugins_url($handle) . ".js";
+  wp_register_script( $handle, $js, array( 'wp-i18n', 'jquery' ) );
+  wp_set_script_translations( $handle, WOOPUS_TXDOM );
+  wp_enqueue_script( $handle, $js );
+  $woopus_alter_license_form = true;
+}
