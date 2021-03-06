@@ -1,34 +1,32 @@
-const { __, _x, _n, _nx } = wp.i18n;
-
 jQuery(function($) {
-  // Set same values as PHP constants defined in admin/init.php
-  var WOOPUS_SLUG = 'woopus';
+  // Constants must be defined before via php or here
+  //
+  // WOOPUS_SLUG  your plugin slug (aka directory name)
+  // WOOPUS_DATA_PLUGIN the plugin file, usually WOOPUS_SLUG/WOOPUS_SLUG.php
+  // WOOPUS_SHOW_HIDE the show/hide link text, eg "Show/Hide License Key"
+  // WOOPUS_REGISTER_TEXT the line added below empty license field, eg "Register your plugin at https://example.com"
+
   if ($('body').hasClass('wppus-license-form-alter-done-' + WOOPUS_SLUG )) return;
-
-  var WOOPUS_DATA_SLUG = WOOPUS_SLUG; // calculated from plugin name, might be different from slug
-  var WOOPUS_DATA_PLUGIN = 'woopus/woopus.php';
-  var WOOPUS_TXDOM = WOOPUS_SLUG; // translation text domain, might be different from slug
-
-  var buttonText = __( 'Show/Hide License key', WOOPUS_TXDOM );
 
   var installRow = $( "[data-plugin='" + WOOPUS_DATA_PLUGIN + "']");
   var licenseRow = $( ".plugin-update-tr:has([data-package_slug='" + WOOPUS_SLUG + "'])" );
+  var switchClass = WOOPUS_SLUG + '-license-switch';
 
   if(! installRow) return;
-
 
   $(".wrap-license[data-package_slug='" + WOOPUS_SLUG + "']").each( function( index, element ) {
     element = $(element);
 
     if (element.find('.current-license').html().length) {
       licenseRow.hide();
-      installRow.find('div.row-actions').append('<span> | <a class="wppus-license-switch ' + WOOPUS_SLUG + '" href="#">' + buttonText + '</a></span>');
+      installRow.find('div.row-actions').append('<span> | <a class="'  + switchClass + '" href="#">' + WOOPUS_SHOW_HIDE + '</a></span>');
     } else {
       licenseRow.show();
+      licenseRow.find('.wrap-license').append( "<p class='getlicense'>" + WOOPUS_REGISTER_TEXT + "</p>" );
     }
   });
 
-  $('.wppus-license-switch.' + WOOPUS_SLUG).on('click', function(e) {
+  $( '.' + switchClass ).on('click', function(e) {
     e.preventDefault();
     licenseRow.toggle();
   });
