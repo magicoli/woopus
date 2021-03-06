@@ -7,15 +7,15 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-03-06T00:08:59-04:00\n"
-"PO-Revision-Date: 2021-03-06 00:10-0400\n"
+"POT-Creation-Date: 2021-03-06T11:27:28-04:00\n"
+"PO-Revision-Date: 2021-03-06 11:28-0400\n"
 "Language: fr\n"
 "X-Generator: Poedit 2.3\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. Plugin Name of the plugin
-msgid "WooPUS - Integration for Plugin Update Server"
+msgid "WooPUS - WooCommerce Integration for Plugin Update Server"
 msgstr "WooPUS - Intégration WooCommerce pour serveur de mises à jour"
 
 #. Plugin URI of the plugin
@@ -33,6 +33,14 @@ msgstr "Magiiic"
 #. Author URI of the plugin
 msgid "https://magiiic.com/"
 msgstr "https://magiiic.com/"
+
+#: admin/dependencies.php:60
+msgid "Activate"
+msgstr "Activer"
+
+#: admin/dependencies.php:74
+msgid "Install"
+msgstr "Installer"
 
 #: admin/dependencies.php:78
 msgid "Download from %s"
@@ -58,6 +66,15 @@ msgstr "%s - Intégration WooCommerce pour serveur de mises à jour"
 msgid "Recommended plugins"
 msgstr "Extensions recommandées"
 
+#. translators: %s is replaced by the name of the plugin, untranslated
+#: admin/init.php:36
+msgid "Get a license key on %s website"
+msgstr "Obtenez une clé de license sur %s"
+
+#: admin/init.php:96
+msgid "Show/Hide License key"
+msgstr "Afficher/Masquer Clé de licence"
+
 #: admin/settings.php:16
 #: admin/updater.php:35
 msgid "License key"
@@ -75,21 +92,15 @@ msgstr "Clé d'autentification API du serveur de mises à jour"
 msgid "Settings"
 msgstr "Réglages"
 
-#: lib/plugin-update-checker/Puc/v4p9/Plugin/Ui.php:77
-msgid "More information about %s"
-msgstr "Plus d'informations sur %s"
+#: admin/wp-plugin-update-server-api.php:28
+msgid "Something went wrong: %s"
+msgstr "Quelque chose s'est mal passé: %s"
+
+#~ msgid "WooPUS - Integration for Plugin Update Server"
+#~ msgstr "WooPUS - Intégration WooCommerce pour serveur de mises à jour"
+
+#~ msgid "More information about %s"
+#~ msgstr "Plus d'informations sur %s"
 
 #~ msgid "WooPUS - WooCommerce Plugin Update Server integration"
 #~ msgstr "WooPUS - Intégration WooCommerce pour serveur de mises à jour"
-
-#~ msgid "Get a license key on %s"
-#~ msgstr "Obtenez une clé de license sur %s"
-
-#~ msgid "Activate"
-#~ msgstr "Activer"
-
-#~ msgid "Install"
-#~ msgstr "Installer"
-
-#~ msgid "Something went wrong: %s"
-#~ msgstr "Quelque chose s'est mal passé: %s"
