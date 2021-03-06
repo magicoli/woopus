@@ -7,8 +7,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-03-05T23:00:47-04:00\n"
-"PO-Revision-Date: 2021-03-05 23:03-0400\n"
+"POT-Creation-Date: 2021-03-05T23:03:48-04:00\n"
+"PO-Revision-Date: 2021-03-05 23:04-0400\n"
 "Language: fr\n"
 "X-Generator: Poedit 2.3\n"
 "X-Poedit-Basepath: .\n"
@@ -23,8 +23,8 @@ msgid "https://magiiic.com/wordpress/woopus"
 msgstr "https://magiiic.com/wordpress/woopus"
 
 #. Description of the plugin
-msgid "WooCommerce integration for WP Plugin Update Server"
-msgstr "Intégration WooCommerce pour WP Plugin Update Server"
+msgid "WooCommerce integration for Plugin Update Server"
+msgstr "Intégration WooCommerce pour serveur de mises à jour"
 
 #. Author of the plugin
 msgid "Magiiic"
