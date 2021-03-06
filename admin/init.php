@@ -24,7 +24,7 @@ require(plugin_dir_path(__FILE__) . 'dependencies.php');
 require(plugin_dir_path(__FILE__) . 'menus.php');
 require(plugin_dir_path(__FILE__) . 'settings.php');
 require(plugin_dir_path(__FILE__) . 'updater.php');
-// require(plugin_dir_path(__FILE__) . 'wppus.php');
+// require(plugin_dir_path(__FILE__) . 'wp-plugin-update-server-api.php');
 // require(plugin_dir_path(__FILE__) . 'woocommerce.php');
 
 // Redirect to settings page after activation

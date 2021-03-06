@@ -35,18 +35,6 @@ function WooPUS_query($params, $endpoint='wppus-license-api', $server="") {
     } else {
       $data         = wp_remote_retrieve_body( $response );
       $decoded_data = json_decode( $data );
-      // Handle failure with $decoded_data
-      // new WPSE_224485_Message( "Wrong, I say wrong.", 'error' );
-      // if ( $decoded_data->result != "success" ) {
-      //   // add_action( 'admin_notices', function() {
-      //   echo '<div class="notice notice-error is-dismissible">';
-      //   echo "<h2>" . print_r( $decoded_data->message, true ) . "</h2>";
-      //   foreach($decoded_data->errors as $error) {
-      //     echo "<p>$error</p>";
-      //   }
-      //   echo "</div>";
-      //   // } );
-      // }
     }
   }
   return $decoded_data;

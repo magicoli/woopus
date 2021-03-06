@@ -32,7 +32,7 @@ if(is_admin()) {
 	// require_once __DIR__ . '/admin/wp-dependencies.php';
 }
 require_once __DIR__ . '/admin/license-manager-for-woocommerce.php';
-require_once __DIR__ . '/admin/wppus.php';
+require_once __DIR__ . '/admin/wp-plugin-update-server-api.php';
 
 /** Enable plugin updates with license check **/
 require_once plugin_dir_path( __FILE__ ) . 'lib/wp-package-updater/class-wp-package-updater.php';

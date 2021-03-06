@@ -69,7 +69,7 @@ msgstr "Clé d'autentification API du serveur de mises à jour"
 msgid "Settings"
 msgstr "Réglages"
 
-#: admin/wppus.php:28
+#: admin/wp-plugin-update-server-api.php:28
 #, php-format
 msgid "Something went wrong: %s"
 msgstr "Quelque chose s'est mal passé: %s"

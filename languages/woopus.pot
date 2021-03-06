@@ -73,7 +73,7 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: admin/wppus.php:28
+#: admin/wp-plugin-update-server-api.php:28
 #, php-format
 msgid "Something went wrong: %s"
 msgstr ""
