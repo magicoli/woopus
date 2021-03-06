@@ -33,6 +33,10 @@ if(is_admin()) {
 }
 require_once __DIR__ . '/admin/license-manager-for-woocommerce.php';
 require_once __DIR__ . '/admin/wp-plugin-update-server-api.php';
+// require_once __DIR__ . '/inc/post-types.php';
+// require_once __DIR__ . '/inc/blocks.php';
+// require_once __DIR__ . '/inc/shortcodes.php';
+// require_once __DIR__ . '/inc/widgets.php';
 
 /** Enable plugin updates with license check **/
 require_once plugin_dir_path( __FILE__ ) . 'lib/wp-package-updater/class-wp-package-updater.php';
@@ -43,10 +47,6 @@ $WooPUS_updater = new WP_Package_Updater(
 	true
 );
 
-// require_once __DIR__ . '/inc/post-types.php';
-// require_once __DIR__ . '/inc/blocks.php';
-// require_once __DIR__ . '/inc/shortcodes.php';
-// require_once __DIR__ . '/inc/widgets.php';
 function WooPUS_load_textdomain() {
 	$textdomain = 'woopus';
 	$result = load_plugin_textdomain( $textdomain, false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );

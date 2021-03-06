@@ -17,7 +17,7 @@ function WooPUS_register_settings_pages() {
     'manage_woocommerce', // capability
     'woopus', // menu_slug
     'WooPUS_display_settings_page', // callable function
-    //   '', // position
+    // '', // position
   );
 }
-add_action('admin_menu', 'WooPUS_register_settings_pages');
+add_action('admin_menu', 'WooPUS_register_settings_pages', 60);

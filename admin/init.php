@@ -35,8 +35,6 @@ if ( ! defined( 'WOOPUS_STORE_LINK' ) ) define('WOOPUS_STORE_LINK', "<a href=" .
 /* translators: %s is replaced by the name of the plugin, untranslated */
 if ( ! defined( 'WOOPUS_REGISTER_TEXT' ) ) define('WOOPUS_REGISTER_TEXT', sprintf(__('Get a license key on %s website', WOOPUS_TXDOM), WOOPUS_STORE_LINK) );
 
-require_once(plugin_dir_path(__FILE__) . 'classes.php');
-
 require(plugin_dir_path(__FILE__) . 'dependencies.php');
 require(plugin_dir_path(__FILE__) . 'menus.php');
 require(plugin_dir_path(__FILE__) . 'settings.php');
