@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:     WooPUS - Integration for Plugin Update Server
+ * Plugin Name:     WooPUS - WooCommerce Integration for Plugin Update Server
  * Plugin URI:      https://magiiic.com/wordpress/woopus
  * Description:     WooCommerce integration for Plugin Update Server
  * Author:          Magiiic
