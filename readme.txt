@@ -8,6 +8,7 @@ Requires PHP: 5.6
 Stable tag: 0.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Disclaimer: This plugin is in an early stage. Although you can get it for free if you search a little bit, buying it will fund development and help providing future features.
 
 WooCommerce integration for Plugin Update Server
 
