@@ -71,16 +71,15 @@ There is only one question that matters, and the answer is 42.
 
 ## Changelog
 
+### 1.2.1
+* added option to synchronize procuct thumbnails with plugin icon (beta)
+
 ### 1.2
-* new option to enable or disable product info sync. Disabled by default
-* added thumbnail update
+* new option to enable or disable product info sync, disabled by default
+* added thumbnail update (with a default icon for now)
 * fix thumbnail not reattached if file already exists
 * fix thumbnail not duplicated animore when identical
-
-### 1.1.2
 * added default icons assets
-
-### 1.1.1
 * updated readme
 
 ### 1.1

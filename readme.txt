@@ -71,6 +71,9 @@ There is only one question that matters, and the answer is 42.
 
 == Changelog ==
 
+= 1.2.1 =
+* added option to synchronize procuct thumbnails with plugin icon (beta)
+
 = 1.2 =
 * new option to enable or disable product info sync, disabled by default
 * added thumbnail update (with a default icon for now)
