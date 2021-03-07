@@ -57,6 +57,9 @@ There is only one question that matters, and the answer is 42.
 
 == Changelog ==
 
+= 1.0.1 =
+* fix settings page link in actions on plugins page
+
 = 1.0 =
 * new auto update post with plugin info
 * added version to title
