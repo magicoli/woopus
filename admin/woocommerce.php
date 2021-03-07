@@ -53,8 +53,8 @@ function woopus_Generate_Featured_Image( $source_url, $post_id, $dest='' ){
 
   if($old_image_data == $new_image_data) {
     $attachment_id = get_post_thumbnail_id($post_id);
-    // $attachment_data = wp_get_attachment_metadata( $attachment_id );
-    $attachment_data = wp_generate_attachment_metadata( $attachment_id, $filename );
+    $attachment_data = wp_get_attachment_metadata( $attachment_id );
+    // $attachment_data = wp_generate_attachment_metadata( $attachment_id, $filename );
   } else {
     file_put_contents($file, $new_image_data);
     if(! file_exists($file)) return [ 'error' => 'file not created' ];
@@ -71,7 +71,9 @@ function woopus_Generate_Featured_Image( $source_url, $post_id, $dest='' ){
   return [ 'success' => true, 'attachment_id' => $attachment_id ];
 }
 
-add_filter( 'wp_insert_post_data' , 'woopus_filter_add_plugin_info' , '98', 2 );
+if(get_option('WooPUS_product_update')) {
+  add_filter( 'wp_insert_post_data' , 'woopus_filter_add_plugin_info' , '98', 2 );
+}
 function woopus_filter_add_plugin_info($data , $postarr) {
   $product_id = $postarr['ID'];
   $factory = new WC_Product_Factory();
@@ -211,16 +213,18 @@ function woopus_filter_add_plugin_info($data , $postarr) {
   }
 
   if($attachment_id) {
-    $debug['attachment_id'] = $attachment_id;
-    $att_url = wp_get_attachment_url($attachment_id);
-    $debug['attachment_url'] = wp_get_attachment_url($attachment_id);
-    $debug['preview'] = "<img src=$att_url width=256>";
-    update_post_meta( $product_id, WOOPUS_SLUG . '_newthumb_id', $attachment_id );
-    add_action( 'save_post', function() use ( $post_id, $attachment_id ) {
-      $current_thumb_id = get_post_thumbnail_id($post_id);
-      if($attachment_id && $current_thumb_id != $attachment_id)
-      set_post_thumbnail( $post_id, $attachment_id );
-    });
+    // $debug['attachment_id'] = $attachment_id;
+    // $att_url = wp_get_attachment_url($attachment_id);
+    // $debug['attachment_url'] = wp_get_attachment_url($attachment_id);
+    // $debug['preview'] = "<img src=$att_url width=256>";
+    // update_post_meta( $product_id, WOOPUS_SLUG . '_newthumb_id', $attachment_id );
+    if(get_option('WooPUS_product_update_thumb')) {
+      add_action( 'save_post', function() use ( $post_id, $attachment_id ) {
+        $current_thumb_id = get_post_thumbnail_id($post_id);
+        if($attachment_id && $current_thumb_id != $attachment_id)
+        set_post_thumbnail( $post_id, $attachment_id );
+      });
+    }
   }
 
   // $data['post_content'] = "<pre>DEBUG " . print_r(array(

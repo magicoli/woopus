@@ -28,6 +28,21 @@ function WooPUS_register_settings() {
   	'name' => __('Update server API Authentication Key', 'woopus'),
   ));
 
+  WooPUS_settings_add_option( 'WooPUS_product_update', '', array(
+    'category' => 'Product updates',
+    'name' => __('Synchronize product with plugin package info', 'woopus'),
+    'description' => __('Use with caution. This will replace title, excerpt, and content of your product page.', 'woopus'),
+    'type' => 'boolean',
+    'default' => true,
+  ));
+
+  // WooPUS_settings_add_option( 'WooPUS_product_update_thumb', '', array(
+  //   'category' => 'Product updates',
+  //   'name' => __('Synchronize product thumbnails', 'woopus'),
+  //   'description' => __('As for now, there is only a default thumbnail. It will be synchronized with the package icons soon, but you probably want to leave this option unchecked for now.', 'woopus'),
+  //   'type' => 'boolean',
+  // ));
+
   // WooPUS_settings_add_option( 'WooPUS_debug', '', array(
   //   'category' => 'Debug',
   //   'type' => 'textarea',
