@@ -17,4 +17,31 @@
 }
 .credits {
   font-size: 0.8em;
+  text-align: right;
+}
+
+.plugin-meta li:first-child {
+    border-top: 0;
+}
+.plugin-meta li {
+    border-top: 1px solid #eee;
+    display: inline-block;
+    padding: 8px 0;
+    padding: .5rem 0;
+    width: 100%;
+    position: relative;
+}
+
+.plugin-meta ul {
+    font-size: 12.8px;
+    font-size: .8rem;
+    list-style-type: none;
+}
+.plugin-meta li strong {
+    float: right;
+}
+.plugin-meta ul {
+    font-size: 12.8px;
+    font-size: .8rem;
+    list-style-type: none;
 }

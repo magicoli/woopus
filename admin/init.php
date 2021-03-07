@@ -48,6 +48,13 @@ if ( ! defined( 'WOOPUS_PACKAGE_KEYS' ) ) define('WOOPUS_PACKAGE_KEYS', array(
     'BannerHigh',
     'BannerLow',
     'package_zip',
+    'Last updated',
+    'Requires at least',
+    'Tested up to',
+    'Requires PHP',
+    'Languages',
+    'Tags',
+    'Donate link',
   )
 );
 

@@ -79,7 +79,24 @@ function woopus_filter_add_plugin_info($data , $postarr) {
   }
   // echo "sections: " . print_r($sections, true) . $n;
   // $fullcontent = sprintf("<div class=headers>%s<div class=headerstitle style='display:flex'>%s<div>&nbsp;</div>%s</div></div>", $headers['banner'], $headers['logo'],$headers['title'] ) . $fullcontent;
-
+  $plugin_metas = array_filter(array(
+    __('Version', WOOPUS_TXDOM ) => $meta['Version'],
+    __('Last updated', WOOPUS_TXDOM ) => $meta['Last updated'],
+    __('Active installations', WOOPUS_TXDOM ) => '',
+    __('WordPress Version', WOOPUS_TXDOM ) => $meta['Requires at least'],
+    __('Tested up to', WOOPUS_TXDOM ) => $meta['Tested up to'],
+    __('PHP Version', WOOPUS_TXDOM ) => $meta['Requires PHP'],
+    __('Languages', WOOPUS_TXDOM ) => $meta['Languages'],
+    __('Tags', WOOPUS_TXDOM ) => $meta['Tags'],
+    __('Author', WOOPUS_TXDOM ) => "<a href='" . $meta['Author URI'] ."' target=_blank>" . $meta['Author'] . "</a>",
+    __('Donate link', WOOPUS_TXDOM ) => "<a href='" . $meta['Donate link'] ."' target=_blank>" . $meta['Donate link'] . "</a>",
+  ) );
+  foreach($plugin_metas as $key => $value ) {
+    $metablock .= "<li>" . $key . " <strong>" . $value . "</strong></li>";
+  }
+  if ( "$metablock" ) {
+    $metablock = "<h2 class='screen-reader-text'>Meta</h2><div class=plugin-meta><ul>" . $metablock . "</ul></div>";
+  }
 
   $update = array(
     'ID' => $product_id,
@@ -90,7 +107,7 @@ function woopus_filter_add_plugin_info($data , $postarr) {
   );
   // $debug['product'] = $product;
   $data['post_title'] = $meta['Plugin Name'] . " " . $meta['Version'] . " - by " . $meta['Author'];
-  $data['post_excerpt'] = $meta['Description'] . " <div class=credits> " . sprintf(__('WordPress Plugin by %s', WOOPUS_TXDOM ), $meta['Author'] ) . '</div>';
+  $data['post_excerpt'] = $meta['Description'] . $metablock;
   $data['post_content'] = $fullcontent;
 
   update_post_meta( $product_id, WOOPUS_SLUG . '_data', $meta );
