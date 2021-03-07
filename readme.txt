@@ -71,6 +71,9 @@ There is only one question that matters, and the answer is 42.
 
 == Changelog ==
 
+= 1.1.2 =
+* added default icons assets
+
 = 1.1.1 =
 * updated readme
 

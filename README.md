@@ -8,6 +8,7 @@
 * Requires PHP: 0.1.0
 * License: GPLv2 or later
 * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Disclaimer: This plugin is in an early stage. Although you can get it for free if you search a little bit, buying it will fund development and help providing future features.
 
 WooCommerce integration for Plugin Update Server
 
@@ -69,6 +70,9 @@ data from the uploaded zip.
 There is only one question that matters, and the answer is 42.
 
 ## Changelog
+
+### 1.1.2
+* added default icons assets
 
 ### 1.1.1
 * updated readme
