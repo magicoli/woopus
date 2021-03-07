@@ -16,6 +16,8 @@
 // }
 
 function woopus_Generate_Featured_Image( $source_url, $post_id, $dest='' ){
+  if(!get_option('WooPUS_product_update_thumb')) return;
+
   if ( $dest ) $filename = basename($dest);
   else  $filename = basename($source_url);
 
