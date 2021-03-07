@@ -15,32 +15,56 @@
 // 	echo '<p>Here\'s your new product tab.</p>';
 // }
 
-function woopus_Generate_Featured_Image( $image_url, $post_id  ){
-    $upload_dir = wp_upload_dir();
-    $image_data = file_get_contents($image_url);
-    $filename = basename($image_url);
-    if(wp_mkdir_p($upload_dir['path']))
-      $file = $upload_dir['path'] . '/' . $filename;
-    else
-      $file = $upload_dir['basedir'] . '/' . $filename;
-    file_put_contents($file, $image_data);
+function woopus_Generate_Featured_Image( $source_url, $post_id, $dest='' ){
+  if ( $dest ) $filename = basename($dest);
+  else  $filename = basename($source_url);
 
-    $wp_filetype = wp_check_filetype($filename, null );
-    $attachment = array(
-        'post_mime_type' => $wp_filetype['type'],
-        'post_title' => sanitize_file_name($filename),
-        'post_content' => '',
-        'post_status' => 'inherit'
-    );
-    $attach_id = wp_insert_attachment( $attachment, $file, $post_id );
-    require_once(ABSPATH . 'wp-admin/includes/image.php');
-    $attach_data = wp_generate_attachment_metadata( $attach_id, $file );
-    $res1= wp_update_attachment_metadata( $attach_id, $attach_data );
-    $res2= set_post_thumbnail( $post_id, $attach_id );
+  foreach(array(
+    wp_get_upload_dir()['basedir'] . '/' . WOOPUS_SLUG,
+    wp_get_upload_dir()['path'],
+  ) as $try) {
+    if(wp_mkdir_p($try)) {
+      // $filename = basename($try);
+      $upload_dir = $try;
+      $file = "$upload_dir/$filename";
+      break;
+    }
+  }
+  if(!$file) return [ 'error' => 'no write access to destination dir' ];
+  $filename=basename($file);
+
+  $image_data = file_get_contents($source_url);
+  if(!$image_data) return [ 'error' => 'could not read image' ];
+
+  file_put_contents($file, $image_data);
+  if(! file_exists($file)) return [ 'error' => 'file not created' ];
+
+  $filetype = wp_check_filetype($filename, null );
+  $attachment = array(
+    // 'post_mime_type' => $filetype['type'],
+    // 'post_title' => sanitize_file_name($filename),
+    // 'post_content' => '',
+    // 'post_status' => 'inherit'
+    'guid'           => sanitize_file_name($filename),
+    'post_mime_type' => $filetype['type'],
+    'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $filename ) ),
+    'post_excerpt'   => sanitize_text_field( $caption ),
+    'post_content'   => sanitize_text_field( $description ),
+    'post_status'    => 'inherit'
+  );
+  $attachment_id = wp_insert_attachment( $attachment, $file, $post_id );
+  if ( is_wp_error( $attachment_id ) ) return [ 'error' => 'wp_insert_attachment'];
+
+  require_once(ABSPATH . 'wp-admin/includes/image.php');
+
+  $attachment_data = wp_generate_attachment_metadata( $attachment_id, $filename );
+  wp_update_attachment_metadata( $attachment_id, $attachment_data );
+  set_post_thumbnail( $post_id, $attachment_id );
+
+  return [ 'success' => true, 'attachment_id' => $attachment_id ];
 }
 
-
-add_filter( 'wp_insert_post_data' , 'woopus_filter_add_plugin_info' , '99', 2 );
+add_filter( 'wp_insert_post_data' , 'woopus_filter_add_plugin_info' , '98', 2 );
 function woopus_filter_add_plugin_info($data , $postarr) {
   $product_id = $postarr['ID'];
   $factory = new WC_Product_Factory();
@@ -129,7 +153,74 @@ function woopus_filter_add_plugin_info($data , $postarr) {
   $data['post_excerpt'] = $meta['Description'] . $metablock;
   $data['post_content'] = $fullcontent;
 
+  $icons = array(
+    WP_PLUGIN_DIR . "/" . dirname(WOOPUS_PLUGIN_FILE) . '/assets/default-plugin-icon-256x256.png',
+    // "zip://$package_zip#$slug/readme.txt",
+    "zip://$package_zip#$slug/assets/icon-256x256.png",
+    "zip://$package_zip#$slug/assets/icon-256x256.jpg",
+    $meta['Icon2x'],
+    $meta['Icon1x'],
+  );
+  // $tmp_dir = get_temp_dir();
+  foreach($icons as $source) {
+    // $debug = woopus_Generate_Featured_Image( $source, $product_id );
+    // if( $debug ) {
+    //     $featured_image = $source;
+    //     break;
+    // }
+    // if(file_exists($source)) {
+    //   $featured_image = $source;
+    //   break;
+    // } else if (preg_match('!^zip:/!', $source )) {
+    $ext = wp_check_filetype($source)['ext'];
+    $basename = preg_replace('/^default-plugin-/', '', basename($source, ".$ext"));
+    $dest = WP_CONTENT_DIR.'/'. WOOPUS_SLUG . "/assets/$slug-$basename.$ext";
+    $tmp_icon = wp_get_upload_dir()['basedir'] . '/' . WOOPUS_SLUG . "/assets/$slug-$basename-tmp.$ext";
+    $thisdebug['icon'] = $source;
+    $thisdebug['dest'] = $dest;
+    $thisdebug['tmp_icon'] = $tmp_icon;
+
+    if(preg_match('/^zip:/', $source)) {
+      // $debug['preg_last_error']=preg_last_error();
+      $thisdebug['zip'] = "File not found or zip file, see later";
+      // do something for zip
+    } else if (file_exists($source)) {
+      $thisdebug['no zip'] = "ok let's try";
+      $try = woopus_Generate_Featured_Image( $source, $product_id, $dest );
+      if($try) {
+        $attachment_id = $try['attachment_id'];
+        $featured_image = wp_get_attachment_url($attachment_id);
+        break;
+      }
+    }
+    // }
+    $debug[]=$thisdebug;
+    if($featured_image) break;
+  }
+  // if($featured_image)
+  // unlink($tmp_icon);
+
   update_post_meta( $product_id, WOOPUS_SLUG . '_data', $meta );
   update_post_meta( $product_id, WOOPUS_SLUG . '_sections', $sections );
+  if($attachment_id) {
+    update_post_meta( $product_id, WOOPUS_SLUG . '_newthumb_id', $attachment_id );
+    add_action( 'save_post', function() use ( $post_id, $attachment_id ) {
+      $current_thumb_id = get_post_thumbnail_id($post_id);
+      if($current_thumb_id && $current_thumb_id != $attachment_id)
+      set_post_thumbnail( $post_id, $attachment_id );
+    });
+  }
   return $data;
+}
+
+function woopus_update_thumbnail( $post_id, $post, $update ) {
+  $factory = new WC_Product_Factory();
+  $product = $factory->get_product( $post_id );
+  echo "<pre>";
+  print_r(array(
+    'post_id' => $post_id,
+    'attachment_id ' . $attachment_id,
+    'attachment_url ' . wp_get_attachment_url($attachment_id),
+  ));
+  die;
 }
