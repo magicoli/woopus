@@ -15,20 +15,22 @@
 // 	echo '<p>Here\'s your new product tab.</p>';
 // }
 
-function woopus_update_product_details($args) {
-  $_pf = new WC_Product_Factory();
-  $product=$_pf->get_product($args['ID']);
-  // return $product;
+add_filter( 'wp_insert_post_data' , 'woopus_filter_add_plugin_info' , '99', 2 );
+// function woopus_filter_post_data( $data , $postarr ) {
+//     // Change post title
+//     $data['post_title'] .= '_suffix';
+//     return $data;
+// }
 
-  // WP_Filesystem();
-  // $product_id = $args['ID'];
-  // $product = get_post( $product_id );
-  if(!$product) return "no post with id $product_id";
-  global $slqdkjqds;
-  $slqdkjqds = $product->post_name;
+function woopus_filter_add_plugin_info($data , $postarr) {
+  $product_id = $postarr['ID'];
+  $factory = new WC_Product_Factory();
+  $product = $factory->get_product( $product_id );
 
+  if(!$product) return $data;
   $downloads = $product->get_downloads();
-  if(!$downloads) return "no downloadable files";
+  if(!$downloads) return $data;
+
   $slug = $product->slug;
   $zipfile=$slug.'.zip';
   if(file_exists(WP_CONTENT_DIR.'/wppus/packages'.'/' . $zipfile))
@@ -46,7 +48,7 @@ function woopus_update_product_details($args) {
       }
     }
   }
-  if(!$package_zip) return array('result' => "no $zipfile");
+  if(!$package_zip) return $data;
 
   $package_headers = array_combine(WOOPUS_PACKAGE_KEYS, WOOPUS_PACKAGE_KEYS);
 
@@ -79,6 +81,7 @@ function woopus_update_product_details($args) {
   $fullcontent = sprintf("<div class=headers>%s<div class=headerstitle style='display:flex'>%s<div>&nbsp;</div>%s</div>
   </div>", $headers['banner'], $headers['logo'],$headers['title'] ) . $fullcontent;
 
+
   $update = array(
     'ID' => $product_id,
     'post_title' => $meta['Plugin Name'] . " - by " . $meta['Author'],
@@ -86,9 +89,12 @@ function woopus_update_product_details($args) {
     // 'post_content' => 'ANd now: ' . $sections['description']['content'],
     'post_content' => '<div class="">' . $fullcontent . '</div>',
   );
-  wp_update_post( $update );
+  // $debug['product'] = $product;
+  $data['post_title'] = $meta['Plugin Name'] . " - by " . $meta['Author'];
+  $data['post_excerpt'] = $meta['Description'] . "<div><em>A plugin proudly provided by <b>Magiiic</b></em></div>";
+  $data['post_content'] = $fullcontent;
+
   update_post_meta( $product_id, WOOPUS_SLUG . '_data', $meta );
   update_post_meta( $product_id, WOOPUS_SLUG . '_sections', $sections );
-
-  return array('meta' => $meta,  'result' => 'success');
+  return $data;
 }
