@@ -6,18 +6,13 @@
 </p>
 <div class='debugzone'>
   <pre><?php
-    $test_product_id = 230;
-    $result = woopus_update_product_details( [ 'ID' => $test_product_id ] );
-    echo "result: $result";
+    // $test_product_id = 230;
+    // $result = woopus_update_product_details( [ 'ID' => $test_product_id ] );
+    // echo "result: $result";
+    //
+    // $content = apply_filters('the_content', get_post_field('post_content', $test_product_id));
+    // echo "</pre>" . $content . "<pre>";
 
-    // $content_post = get_post($test_product_id);
-    // $content = $content_post->post_content;
-    // $content = apply_filters('the_content', $content);
-    // $content = str_replace(']]>', ']]&gt;', $content);
-
-$content = apply_filters('the_content', get_post_field('post_content', $test_product_id));
-
-    echo "</pre>" . $content . "<pre>";
     // foreach ($sections as $meta_key => $section) {
     //   echo "$meta_key";
     //   echo "</pre>";

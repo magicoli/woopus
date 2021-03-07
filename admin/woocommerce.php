@@ -76,9 +76,13 @@ function woopus_update_product_details($args) {
   // fclose($open);
 
   $meta = get_file_data($package_info_file, $package_headers);
+  echo "meta: " . print_r($meta, true) . $n;
 
-  // echo "data: " . print_r($meta, true) . $n;
+  $headers['banner'] = sprintf('<div class=banner><img src="%s" alt="%s banner"></div>', $meta['BannerLow'], $meta['Plugin Name']);
+  $headers['logo'] = sprintf('<div class=logo><img src="%s" alt="%s logo"></div>', $meta['Icon1x'], $meta['Plugin Name']);
+  $headers['title'] = sprintf('<div class=title><h1>%s</h1><div class=by>by %s</div></div>', $meta['Plugin Name'], $meta['Author']);
 
+  // $headers['']
   $package_readme = file_get_contents("zip://$package_zip#$slug/readme.txt");
 
   $Parsedown = new Parsedown();
@@ -95,6 +99,8 @@ function woopus_update_product_details($args) {
     else $fullcontent .= "<h2>" . $section['title'] . "</h2>" . $section['content'];
   }
   // echo "sections: " . print_r($sections, true) . $n;
+  $fullcontent = sprintf("<div class=headers>%s<div class=headerstitle style='display:flex'>%s<div>&nbsp;</div>%s</div>
+  </div>", $headers['banner'], $headers['logo'],$headers['title'] ) . $fullcontent;
 
   $update = array(
     'ID' => $product_id,
