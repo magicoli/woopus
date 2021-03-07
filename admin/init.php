@@ -32,6 +32,25 @@ if ( ! defined( 'WOOPUS_TXDOM' ) ) define('WOOPUS_TXDOM', ($plugin_data['TextDom
 if ( ! defined( 'WOOPUS_DATA_SLUG' ) ) define('WOOPUS_DATA_SLUG', sanitize_title(WOOPUS_PLUGIN_NAME) );
 if ( ! defined( 'WOOPUS_STORE_LINK' ) ) define('WOOPUS_STORE_LINK', "<a href=" . WOOPUS_PLUGIN_URI . " target=_blank>" . WOOPUS_AUTHOR_NAME . "</a>");
 
+if ( ! defined( 'WOOPUS_PACKAGE_KEYS' ) ) define('WOOPUS_PACKAGE_KEYS', array(
+    'Plugin Name',
+    'Plugin URI',
+    'Version',
+    'Description',
+    'Author',
+    'Author URI',
+    'Text Domain',
+    'Domain Path',
+    'Network',
+    'Donate link',
+    'Icon1x',
+    'Icon2x',
+    'BannerHigh',
+    'BannerLow',
+    'package_zip',
+  )
+);
+
 /* translators: %s is replaced by the name of the plugin, untranslated */
 if ( ! defined( 'WOOPUS_REGISTER_TEXT' ) ) define('WOOPUS_REGISTER_TEXT', sprintf(__('Get a license key on %s website', WOOPUS_TXDOM), WOOPUS_STORE_LINK) );
 

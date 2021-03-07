@@ -16,48 +16,43 @@
 // }
 
 function woopus_update_product_details($args) {
+  $_pf = new WC_Product_Factory();
+  $product=$_pf->get_product($args['ID']);
+  // return $product;
+
   // WP_Filesystem();
+  // $product_id = $args['ID'];
+  // $product = get_post( $product_id );
+  if(!$product) return "no post with id $product_id";
+  global $slqdkjqds;
+  $slqdkjqds = $product->post_name;
 
-  $n="\n"; // for debug
-  $product_id = $args['ID'];
-  // wp_update_post( array('ID' => $product_id, 'post_excerpt' => $new_short_description ) );
-  $product = get_post( $product_id );
-  // echo "product " . print_r($product, true) . $n;
-  $slug = $product->post_name;
-  if(!$slug) return "no slug for $product_id";
+  $downloads = $product->get_downloads();
+  if(!$downloads) return "no downloadable files";
+  $slug = $product->slug;
+  $zipfile=$slug.'.zip';
+  if(file_exists(WP_CONTENT_DIR.'/wppus/packages'.'/' . $zipfile))
+  $package_zip = WP_CONTENT_DIR.'/wppus/packages'.'/' . $zipfile;
+  else {
+    // Loop through each downloadable file
+    $upload_dir = wp_get_upload_dir()['basedir'];
+    $upload_url = wp_get_upload_dir()['baseurl'];
+    foreach( $downloads as $key => $value ) {
+      $fileurl=$value['file'];
+      if(preg_match('!'.$upload_url.'.*/' . $zipfile.'!', $fileurl)) {
+        $package_zip=preg_replace('!'.$upload_url.'!', $upload_dir, $fileurl);
+        // We could handle several packages in the same product but we won't
+        break;
+      }
+    }
+  }
+  if(!$package_zip) return array('result' => "no $zipfile");
 
-  $packages_dir= WP_CONTENT_DIR . '/wppus/packages';
-
-  $package_zip="$packages_dir/$slug.zip";
-  $woopus_upload_dir=wp_upload_dir()['basedir'] . "/" . WOOPUS_SLUG;
-  $woopus_upload_url=wp_upload_dir()['baseurl'] . "/" . WOOPUS_SLUG;
-
-  if( ! file_exists($package_zip) ) return "cannot find $package_zip";
-
-  // $package_info_file=$woopus_upload_dir . "/$slug-info.txt";
-  // $package_info_file="zip://$package_zip#$slug/readme.txt"
-
-  $keys = array(
-    'Plugin Name',
-    'Plugin URI',
-    'Version',
-    'Description',
-    'Author',
-    'Author URI',
-    'Text Domain',
-    'Domain Path',
-    'Network',
-    'Donate link',
-    'Icon1x',
-    'Icon2x',
-    'BannerHigh',
-    'BannerLow',
-    'package_zip',
-  );
-  $package_headers = array_combine($keys, $keys);
+  $package_headers = array_combine(WOOPUS_PACKAGE_KEYS, WOOPUS_PACKAGE_KEYS);
 
   $meta_php = get_file_data( "zip://$package_zip#$slug/$slug.php", $package_headers);
   $meta_readme = get_file_data( "zip://$package_zip#$slug/readme.txt", $package_headers);
+
   $meta = array_merge($meta_php, array_filter($meta_readme));
   $meta['package_zip'] = $package_zip; // temporary for dev purpose, makes no sense
 
