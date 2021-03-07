@@ -70,6 +70,9 @@ There is only one question that matters, and the answer is 42.
 
 == Changelog ==
 
+= 1.1.1 =
+* updated readme
+
 = 1.1 =
 * new metablock with Version, PHP and WP requirements, Author...
 
