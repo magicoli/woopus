@@ -71,6 +71,12 @@ There is only one question that matters, and the answer is 42.
 
 ## Changelog
 
+### 1.2
+* new option to enable or disable product info sync. Disabled by default
+* added thumbnail update
+* fix thumbnail not reattached if file already exists
+* fix thumbnail not duplicated animore when identical
+
 ### 1.1.2
 * added default icons assets
 
