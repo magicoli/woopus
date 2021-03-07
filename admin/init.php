@@ -10,7 +10,7 @@ if ( ! defined( 'WPINC' ) ) die;
 
 // Set constants. Only WOOPUS_SLUG should be changed, other values are fetched from plugin file
 // Some of these might also need to be defined in js files
-if ( ! defined( 'WOOPUS_SLUG' ) ) define('WOOPUS_SLUG', 'woopus' );
+// if ( ! defined( 'WOOPUS_SLUG' ) ) define('WOOPUS_SLUG', 'woopus' );
 if ( ! defined( 'WOOPUS_DATA_PLUGIN' ) ) define('WOOPUS_DATA_PLUGIN', WOOPUS_SLUG . "/" . WOOPUS_SLUG . ".php" );
 
 $plugin_data = get_file_data(WP_PLUGIN_DIR . "/" . WOOPUS_DATA_PLUGIN, array(
@@ -36,14 +36,17 @@ if ( ! defined( 'WOOPUS_STORE_LINK' ) ) define('WOOPUS_STORE_LINK', "<a href=" .
 if ( ! defined( 'WOOPUS_REGISTER_TEXT' ) ) define('WOOPUS_REGISTER_TEXT', sprintf(__('Get a license key on %s website', WOOPUS_TXDOM), WOOPUS_STORE_LINK) );
 
 require(plugin_dir_path(__FILE__) . 'dependencies.php');
+require(plugin_dir_path(__FILE__) . 'woocommerce.php');
 require(plugin_dir_path(__FILE__) . 'menus.php');
 require(plugin_dir_path(__FILE__) . 'settings.php');
 // require(plugin_dir_path(__FILE__) . 'woocommerce.php');
 
-function WooPUS_load_plugin_css() {
+require(plugin_dir_path(__DIR__) . 'lib/parsedown/Parsedown.php');
+
+function WooPUS_load_admin_css() {
 	wp_enqueue_style( WOOPUS_SLUG . '-admin', plugin_dir_url( __FILE__ ) . 'admin.css' );
 }
-add_action( 'admin_enqueue_scripts', 'WooPUS_load_plugin_css' );
+add_action( 'admin_enqueue_scripts', 'WooPUS_load_admin_css' );
 
 // Redirect to settings page after activation
 function WooPUS_activation_redirect( $plugin ) {

@@ -21,6 +21,7 @@
 // Your code starts here.
 
 if ( ! defined( 'WPINC' ) ) die;
+if ( ! defined( 'WOOPUS_SLUG' ) ) define('WOOPUS_SLUG', 'woopus' );
 
 if(is_admin()) {
 	require_once __DIR__ . '/admin/init.php';
@@ -42,6 +43,10 @@ $WooPUS_updater = new WP_Package_Updater(
 	true
 );
 
+function WooPUS_load_plugin_css() {
+	wp_enqueue_style( WOOPUS_SLUG . '-global', plugin_dir_url( __FILE__ ) . 'css/global.css' );
+}
+add_action( 'wp_enqueue_scripts', 'WooPUS_load_plugin_css' );
 
 function WooPUS_load_textdomain() {
 	$textdomain = 'woopus';

@@ -115,7 +115,7 @@ global $WooPUS_Dependencies, $WooPUS_Recommended, $WooPUS_Required;
 				<?php if ( current_user_can( 'manage_options' ) ) submit_button(); ?>
 			</form>
 		</div>
-		<?php if(file_exists) {
+		<?php if(file_exists(plugin_dir_path(__FILE__) . '/debug.php')) {
 			echo '<div class="column">';
 			include('debug.php');
 			echo '</div>';
