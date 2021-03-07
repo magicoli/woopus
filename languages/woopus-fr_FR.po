@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2021-03-07T15:37:12-04:00\n"
-"PO-Revision-Date: 2021-03-07 15:38-0400\n"
+"PO-Revision-Date: 2021-03-07 15:39-0400\n"
 "Language: fr\n"
 "X-Generator: Poedit 2.3\n"
 "X-Poedit-Basepath: .\n"
@@ -93,7 +93,7 @@ msgstr "Synchroniser le produit avec les données du package de l'extension"
 
 #: admin/settings.php:34
 msgid "Use with caution. This will replace title, excerpt, and content of your product page."
-msgstr "À utiliser avec précaution. Cela remplacera le titre, l'extrait et le contenu sur votre page produit."
+msgstr "À utiliser avec précaution. Cela remplacera le titre, l'extrait et le contenu de la page produit."
 
 #: admin/settings.php:77
 msgid "Settings"
