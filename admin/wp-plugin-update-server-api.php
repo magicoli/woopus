@@ -5,7 +5,7 @@
 
 if ( ! defined( 'WPINC' ) ) die;
 
-function WooPUS_query($params, $endpoint='wppus-license-api', $server="") {
+function WooPUS_license_query($params, $endpoint='wppus-license-api', $server="") {
   if(!$server) $server = get_option('WooPUS_pus_url');
 
   $url = "$server/$endpoint/"; // Replace domain.com with the domain where WP Plugin Update Server is installed.
@@ -47,7 +47,7 @@ function WooPUS_license_get_info($key) { // return licence object
   'action'      => 'check',        // Action to perform when calling the License API (required)
   'license_key' => $key, // The key of the license to check (required)
   );
-  return WooPUS_query($params, 'wppus-license-api');
+  return WooPUS_license_query($params, 'wppus-license-api');
 }
 // $licence_object = WooPUS_license_get_info( get_option( 'license_key_woopus' ) );
 
@@ -58,7 +58,7 @@ function WooPUS_license_read($key) { // return licence object
   'license_key'  => $key, // The key of the license to read (optional if id is provided)
   'api_auth_key' => get_option('WooPUS_pus_api_key'),       // The Private API Authentication Key (required)
   );
-  return WooPUS_query($params, 'wppus-license-api');
+  return WooPUS_license_query($params, 'wppus-license-api');
 }
 // $licence_object = WooPUS_license_read( get_option( 'license_key_woopus' ) );
 
@@ -87,14 +87,13 @@ function WooPUS_license_add($key, $email, $package_slug, $args=[] ) { // return 
   'api_auth_key' => get_option('WooPUS_pus_api_key'),       // The Private API Authentication Key (required)
   );
   $params = array_merge($params, $args);
-  $result = WooPUS_query($params, 'wppus-license-api');
-  return $result;
+  return WooPUS_license_query($params, 'wppus-license-api');
 }
 // $licence_object = WooPUS_license_add( 'test-' . uniqid(), 'user@example.com', 'dummy-package' );
 
 // echo "<pre>WooPUS_license_add\n" . print_r( $data, true ) . "</pre>";
 
-function WooPUS_browse() {
+function WooPUS_license_browse() {
   $license_query = array(
   'relationship' => 'AND',          // Relationship of the criteria when provided - 'AND or 'OR' - default 'AND' (optional)
   // 'limit'        => '10',           // Limit the number of results - default 10 (optional)
