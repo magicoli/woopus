@@ -33,10 +33,15 @@ function woopus_Generate_Featured_Image( $source_url, $post_id, $dest='' ){
   if(!$file) return [ 'error' => 'no write access to destination dir' ];
   $filename=basename($file);
 
-  $image_data = file_get_contents($source_url);
-  if(!$image_data) return [ 'error' => 'could not read image' ];
+  $new_image_data = file_get_contents($source_url);
+  if(!$new_image_data) return [ 'error' => 'could not read image' ];
 
-  file_put_contents($file, $image_data);
+  if(file_exists($file)) {
+    $old_image_data = file_get_contents($source_url);
+    if($old_image_data == $new_image_data)
+    return [ 'success' => 'image not changed, nothing to do' ];
+  }
+  file_put_contents($file, $new_image_data);
   if(! file_exists($file)) return [ 'error' => 'file not created' ];
 
   $filetype = wp_check_filetype($filename, null );
@@ -206,7 +211,7 @@ function woopus_filter_add_plugin_info($data , $postarr) {
     update_post_meta( $product_id, WOOPUS_SLUG . '_newthumb_id', $attachment_id );
     add_action( 'save_post', function() use ( $post_id, $attachment_id ) {
       $current_thumb_id = get_post_thumbnail_id($post_id);
-      if($current_thumb_id && $current_thumb_id != $attachment_id)
+      if($attachment_id && $current_thumb_id != $attachment_id)
       set_post_thumbnail( $post_id, $attachment_id );
     });
   }
