@@ -38,18 +38,11 @@ function woopus_Generate_Featured_Image( $source_url, $post_id, $dest='' ){
 
   if(file_exists($file)) {
     $old_image_data = file_get_contents($source_url);
-    if($old_image_data == $new_image_data)
-    return [ 'success' => 'image not changed, nothing to do' ];
   }
-  file_put_contents($file, $new_image_data);
-  if(! file_exists($file)) return [ 'error' => 'file not created' ];
 
+  require_once(ABSPATH . 'wp-admin/includes/image.php');
   $filetype = wp_check_filetype($filename, null );
   $attachment = array(
-    // 'post_mime_type' => $filetype['type'],
-    // 'post_title' => sanitize_file_name($filename),
-    // 'post_content' => '',
-    // 'post_status' => 'inherit'
     'guid'           => sanitize_file_name($filename),
     'post_mime_type' => $filetype['type'],
     'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $filename ) ),
@@ -57,13 +50,22 @@ function woopus_Generate_Featured_Image( $source_url, $post_id, $dest='' ){
     'post_content'   => sanitize_text_field( $description ),
     'post_status'    => 'inherit'
   );
-  $attachment_id = wp_insert_attachment( $attachment, $file, $post_id );
-  if ( is_wp_error( $attachment_id ) ) return [ 'error' => 'wp_insert_attachment'];
 
-  require_once(ABSPATH . 'wp-admin/includes/image.php');
+  if($old_image_data == $new_image_data) {
+    $attachment_id = get_post_thumbnail_id($post_id);
+    // $attachment_data = wp_get_attachment_metadata( $attachment_id );
+    $attachment_data = wp_generate_attachment_metadata( $attachment_id, $filename );
+  } else {
+    file_put_contents($file, $new_image_data);
+    if(! file_exists($file)) return [ 'error' => 'file not created' ];
 
-  $attachment_data = wp_generate_attachment_metadata( $attachment_id, $filename );
+    $attachment_id = wp_insert_attachment( $attachment, $file, $post_id );
+    if ( is_wp_error( $attachment_id ) ) return [ 'error' => 'wp_insert_attachment'];
+    $attachment_data = wp_generate_attachment_metadata( $attachment_id, $filename );
+  }
+
   wp_update_attachment_metadata( $attachment_id, $attachment_data );
+
   set_post_thumbnail( $post_id, $attachment_id );
 
   return [ 'success' => true, 'attachment_id' => $attachment_id ];
@@ -160,14 +162,15 @@ function woopus_filter_add_plugin_info($data , $postarr) {
 
   $icons = array(
     WP_PLUGIN_DIR . "/" . dirname(WOOPUS_PLUGIN_FILE) . '/assets/default-plugin-icon-256x256.png',
-    // "zip://$package_zip#$slug/readme.txt",
-    "zip://$package_zip#$slug/assets/icon-256x256.png",
-    "zip://$package_zip#$slug/assets/icon-256x256.jpg",
-    $meta['Icon2x'],
-    $meta['Icon1x'],
+    // "zip://$package_zip#$slug/assets/icon-256x256.png",
+    // "zip://$package_zip#$slug/assets/icon-256x256.jpg",
+    // $meta['Icon2x'],
+    // $meta['Icon1x'],
   );
   // $tmp_dir = get_temp_dir();
+  $debug['parsing'] = 'parsing icons';
   foreach($icons as $source) {
+    $debug[]=$source;
     // $debug = woopus_Generate_Featured_Image( $source, $product_id );
     // if( $debug ) {
     //     $featured_image = $source;
@@ -187,27 +190,31 @@ function woopus_filter_add_plugin_info($data , $postarr) {
 
     if(preg_match('/^zip:/', $source)) {
       // $debug['preg_last_error']=preg_last_error();
-      $thisdebug['zip'] = "File not found or zip file, see later";
+      $debug['zip'] = "File not found or zip file, see later";
       // do something for zip
     } else if (file_exists($source)) {
-      $thisdebug['no zip'] = "ok let's try";
+      $debug['no zip'] = "ok let's try";
       $try = woopus_Generate_Featured_Image( $source, $product_id, $dest );
       if($try) {
+        $debug['generate'] = $try;
         $attachment_id = $try['attachment_id'];
+
         $featured_image = wp_get_attachment_url($attachment_id);
         break;
       }
+    } else {
+      $debug['404'] = "$source not found";
     }
     // }
     $debug[]=$thisdebug;
     if($featured_image) break;
   }
-  // if($featured_image)
-  // unlink($tmp_icon);
 
-  update_post_meta( $product_id, WOOPUS_SLUG . '_data', $meta );
-  update_post_meta( $product_id, WOOPUS_SLUG . '_sections', $sections );
   if($attachment_id) {
+    $debug['attachment_id'] = $attachment_id;
+    $att_url = wp_get_attachment_url($attachment_id);
+    $debug['attachment_url'] = wp_get_attachment_url($attachment_id);
+    $debug['preview'] = "<img src=$att_url width=256>";
     update_post_meta( $product_id, WOOPUS_SLUG . '_newthumb_id', $attachment_id );
     add_action( 'save_post', function() use ( $post_id, $attachment_id ) {
       $current_thumb_id = get_post_thumbnail_id($post_id);
@@ -215,6 +222,13 @@ function woopus_filter_add_plugin_info($data , $postarr) {
       set_post_thumbnail( $post_id, $attachment_id );
     });
   }
+
+  // $data['post_content'] = "<pre>DEBUG " . print_r(array(
+  //   'debug' => $debug,
+  // ), true);
+
+  update_post_meta( $product_id, WOOPUS_SLUG . '_data', $meta );
+  update_post_meta( $product_id, WOOPUS_SLUG . '_sections', $sections );
   return $data;
 }
 
