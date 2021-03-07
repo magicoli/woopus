@@ -34,7 +34,8 @@ function woopus_update_product_details($args) {
 
   if( ! file_exists($package_zip) ) return "cannot find $package_zip";
 
-  $package_info_file=$woopus_upload_dir . "/$slug-info.txt";
+  // $package_info_file=$woopus_upload_dir . "/$slug-info.txt";
+  // $package_info_file="zip://$package_zip#$slug/readme.txt"
 
   $keys = array(
     'Plugin Name',
@@ -51,43 +52,24 @@ function woopus_update_product_details($args) {
     'Icon2x',
     'BannerHigh',
     'BannerLow',
-    'EmptyVar',
     'package_zip',
   );
   $package_headers = array_combine($keys, $keys);
 
-  // Get info from plugin file
-  $checkfile=$woopus_upload_dir . "/$slug-check";
-  $open = fopen($checkfile, "w+");
-  $write = fwrite($open, $package_data_file);
-  fclose($open);
-
-  $meta = get_file_data( "zip://$package_zip#$slug/$slug.php", $package_headers);
-  $meta = array_merge($meta, array_filter(get_file_data( "zip://$package_zip#$slug/readme.txt", $package_headers)));
+  $meta_php = get_file_data( "zip://$package_zip#$slug/$slug.php", $package_headers);
+  $meta_readme = get_file_data( "zip://$package_zip#$slug/readme.txt", $package_headers);
+  $meta = array_merge($meta_php, array_filter($meta_readme));
   $meta['package_zip'] = $package_zip; // temporary for dev purpose, makes no sense
-
-  $open = fopen($package_info_file, "w+");
-  foreach($meta as $key => $value) {
-    if($value) fwrite($open, "$key: $value" . $n);
-    // echo "$key: $value" . $n;
-  }
-  fwrite($open, $n);
-  // $write = fwrite($open, $package_readme . $n);
-  // fclose($open);
-
-  $meta = get_file_data($package_info_file, $package_headers);
-  echo "meta: " . print_r($meta, true) . $n;
 
   $headers['banner'] = sprintf('<div class=banner><img src="%s" alt="%s banner"></div>', $meta['BannerLow'], $meta['Plugin Name']);
   $headers['logo'] = sprintf('<div class=logo><img src="%s" alt="%s logo"></div>', $meta['Icon1x'], $meta['Plugin Name']);
   $headers['title'] = sprintf('<div class=title><h1>%s</h1><div class=by>by %s</div></div>', $meta['Plugin Name'], $meta['Author']);
 
-  // $headers['']
-  $package_readme = file_get_contents("zip://$package_zip#$slug/readme.txt");
+  $readme_text = file_get_contents("zip://$package_zip#$slug/readme.txt");
 
   $Parsedown = new Parsedown();
 
-  $content =  preg_split ( '/\n==\s*/' , $package_readme, -1, PREG_SPLIT_DELIM_CAPTURE );
+  $content =  preg_split ( '/\n==\s*/' , $readme_text, -1, PREG_SPLIT_DELIM_CAPTURE );
   array_shift($content); // first part is garbage
   foreach ($content as $key => $raw) {
     $split = preg_split ( '/\s*==\s*\n/' , $raw );
@@ -113,12 +95,5 @@ function woopus_update_product_details($args) {
   update_post_meta( $product_id, WOOPUS_SLUG . '_data', $meta );
   update_post_meta( $product_id, WOOPUS_SLUG . '_sections', $sections );
 
-  // foreach ($sections as $meta_key => $section) {
-  //   echo "$meta_key";
-  //   echo "</pre>";
-  //   echo "<h2>" . $section['title'] . "</h2>";
-  //   echo $section['content'];
-  //   echo "<pre>";
-  // }
-  return "success";
+  return array('meta' => $meta,  'result' => 'success');
 }

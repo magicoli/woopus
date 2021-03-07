@@ -8,7 +8,7 @@
   <pre><?php
     // $test_product_id = 230;
     // $result = woopus_update_product_details( [ 'ID' => $test_product_id ] );
-    // echo "result: $result";
+    // echo "result: " . print_r($result, true);
     //
     // $content = apply_filters('the_content', get_post_field('post_content', $test_product_id));
     // echo "</pre>" . $content . "<pre>";
