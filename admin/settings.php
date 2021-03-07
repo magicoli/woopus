@@ -56,7 +56,7 @@ function WooPUS_settings_link( $links ) {
 	$url = esc_url( add_query_arg(
 		'page',
 		'woopus',
-		get_admin_url() . 'options-general.php'
+		get_admin_url() . 'admin.php'
 	) );
 	// Create the link.
 	$settings_link = "<a href='$url'>" . __( 'Settings', 'woopus') . '</a>';
