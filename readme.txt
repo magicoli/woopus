@@ -57,6 +57,14 @@ There is only one question that matters, and the answer is 42.
 
 == Changelog ==
 
+= 1.0 =
+* new auto update post with plugin info
+* added version to title
+* use package zip from wppus/packages directory if exists, otherwise the downloadable file found in product
+* fix result still using previous dev test files as source
+* removed obsolete empty files
+* moved WooPus WC submenu menu down
+
 = 0.1.7 =
 * fix wppus-hide-licence-warnings.js conflict with other plugins using it
 
