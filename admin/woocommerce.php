@@ -91,16 +91,17 @@ function woopus_update_product_details($args) {
     $section['title'] = $split[0];
     $section['content'] = preg_replace('/=(.*)=/', '<h3>$1</h3>', "\n" . $Parsedown->text($split[1]) . "\n");
     $sections[$meta_key] = $section;
-    $fullcontent .= "<h2>" . $section['title'] . "</h2>" . $section['content'];
+    if(! $fullcontent ) $fullcontent .= $section['content'];
+    else $fullcontent .= "<h2>" . $section['title'] . "</h2>" . $section['content'];
   }
   // echo "sections: " . print_r($sections, true) . $n;
 
   $update = array(
     'ID' => $product_id,
     'post_title' => $meta['Plugin Name'] . " - by " . $meta['Author'],
-    'post_excerpt' => 'From repository: ' . $meta['Description'],
+    'post_excerpt' => $meta['Description'],
     // 'post_content' => 'ANd now: ' . $sections['description']['content'],
-    'post_content' => 'ANd now: ' . '<div class=markdown>' . $fullcontent . '</div>',
+    'post_content' => '<div class="">' . $fullcontent . '</div>',
   );
   wp_update_post( $update );
   update_post_meta( $product_id, WOOPUS_SLUG . '_data', $meta );
