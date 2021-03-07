@@ -2,13 +2,13 @@ jQuery(function($) {
   // Constants must be defined before via php or here
   //
   // WOOPUS_SLUG  your plugin slug (aka directory name)
-  // WOOPUS_DATA_PLUGIN the plugin file, usually WOOPUS_SLUG/WOOPUS_SLUG.php
+  // WOOPUS_PLUGIN_FILE the plugin file, usually WOOPUS_SLUG/WOOPUS_SLUG.php
   // WOOPUS_SHOW_HIDE the show/hide link text, eg "Show/Hide License Key"
   // WOOPUS_REGISTER_TEXT the line added below empty license field, eg "Register your plugin at https://example.com"
 
   if ($('body').hasClass('wppus-license-form-alter-done-' + WOOPUS_SLUG )) return;
 
-  var installRow = $( "[data-plugin='" + WOOPUS_DATA_PLUGIN + "']");
+  var installRow = $( "[data-plugin='" + WOOPUS_PLUGIN_FILE + "']");
   var licenseRow = $( ".plugin-update-tr:has([data-package_slug='" + WOOPUS_SLUG + "'])" );
   var switchClass = WOOPUS_SLUG + '-license-switch';
 

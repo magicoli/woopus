@@ -11,9 +11,9 @@ if ( ! defined( 'WPINC' ) ) die;
 // Set constants. Only WOOPUS_SLUG should be changed, other values are fetched from plugin file
 // Some of these might also need to be defined in js files
 // if ( ! defined( 'WOOPUS_SLUG' ) ) define('WOOPUS_SLUG', 'woopus' );
-if ( ! defined( 'WOOPUS_DATA_PLUGIN' ) ) define('WOOPUS_DATA_PLUGIN', WOOPUS_SLUG . "/" . WOOPUS_SLUG . ".php" );
+if ( ! defined( 'WOOPUS_PLUGIN_FILE' ) ) define('WOOPUS_PLUGIN_FILE', WOOPUS_SLUG . "/" . WOOPUS_SLUG . ".php" );
 
-$plugin_data = get_file_data(WP_PLUGIN_DIR . "/" . WOOPUS_DATA_PLUGIN, array(
+$plugin_data = get_file_data(WP_PLUGIN_DIR . "/" . WOOPUS_PLUGIN_FILE, array(
   'Name' => 'Plugin Name',
   'PluginURI' => 'Plugin URI',
   'Version' => 'Version',
@@ -122,7 +122,7 @@ function woopus_alter_license_notice() {
   wp_register_script( $handle, $js, array( 'wp-i18n', 'jquery' ) );
   // wp_set_script_translations( $handle, WOOPUS_TXDOM );
   wp_enqueue_script( $handle, $js );
-  foreach ( [ 'WOOPUS_SLUG', 'WOOPUS_DATA_SLUG', 'WOOPUS_DATA_PLUGIN', 'WOOPUS_TXDOM', 'WOOPUS_REGISTER_TEXT' ] as $CONST ) {
+  foreach ( [ 'WOOPUS_SLUG', 'WOOPUS_DATA_SLUG', 'WOOPUS_PLUGIN_FILE', 'WOOPUS_TXDOM', 'WOOPUS_REGISTER_TEXT' ] as $CONST ) {
     wp_add_inline_script( $handle, "const $CONST = '" . constant($CONST) . "';", 'before' );
   }
   wp_add_inline_script( $handle, "const WOOPUS_SHOW_HIDE = '" . __( 'Show/Hide License key', WOOPUS_TXDOM ) . "';", 'before' );
