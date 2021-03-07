@@ -78,8 +78,7 @@ function woopus_filter_add_plugin_info($data , $postarr) {
     else $fullcontent .= "<h2>" . $section['title'] . "</h2>" . $section['content'];
   }
   // echo "sections: " . print_r($sections, true) . $n;
-  $fullcontent = sprintf("<div class=headers>%s<div class=headerstitle style='display:flex'>%s<div>&nbsp;</div>%s</div>
-  </div>", $headers['banner'], $headers['logo'],$headers['title'] ) . $fullcontent;
+  // $fullcontent = sprintf("<div class=headers>%s<div class=headerstitle style='display:flex'>%s<div>&nbsp;</div>%s</div></div>", $headers['banner'], $headers['logo'],$headers['title'] ) . $fullcontent;
 
 
   $update = array(
@@ -90,8 +89,8 @@ function woopus_filter_add_plugin_info($data , $postarr) {
     'post_content' => '<div class="">' . $fullcontent . '</div>',
   );
   // $debug['product'] = $product;
-  $data['post_title'] = $meta['Plugin Name'] . " - by " . $meta['Author'];
-  $data['post_excerpt'] = $meta['Description'] . "<div><em>A plugin proudly provided by <b>Magiiic</b></em></div>";
+  $data['post_title'] = $meta['Plugin Name'] . " " . $meta['Version'] . " - by " . $meta['Author'];
+  $data['post_excerpt'] = $meta['Description'] . " <div class=credits> " . sprintf(__('WordPress Plugin by %s', WOOPUS_TXDOM ), $meta['Author'] ) . '</div>';
   $data['post_content'] = $fullcontent;
 
   update_post_meta( $product_id, WOOPUS_SLUG . '_data', $meta );

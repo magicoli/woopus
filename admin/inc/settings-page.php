@@ -116,9 +116,9 @@ global $WooPUS_Dependencies, $WooPUS_Recommended, $WooPUS_Required;
 			</form>
 		</div>
 		<?php if(file_exists(plugin_dir_path(__FILE__) . '/debug.php')) {
-			echo '<div class="column">';
-			include('debug.php');
-			echo '</div>';
+			// echo '<div class="column">';
+			// include('debug.php');
+			// echo '</div>';
 		}	?>
 	</div>
 </div>
