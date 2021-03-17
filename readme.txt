@@ -71,6 +71,9 @@ There is only one question that matters, and the answer is 42.
 
 == Changelog ==
 
+= 1.2.2 =
+* fix dependencies conflict with other plugins
+
 = 1.2.1 =
 * added option to synchronize procuct thumbnails with plugin icon (beta)
 
