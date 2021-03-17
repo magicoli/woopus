@@ -37,9 +37,8 @@ $WooPUS_Dependencies = [
 add_action( 'admin_init', 'WooPUS_dependencies_check' );
 
 function WooPUS_dependencies_check() {
-  global $WooPUS_Dependencies;
-  global $WooPUS_Recommended;
-  global $message, $required, $recommended;
+  global $WooPUS_Dependencies, $WooPUS_Recommended, $WooPUS_required;
+  // global $message, $recommended;
   if(empty($WooPUS_Dependencies)) return;
   // $unmet=array();
   $installed_plugins = get_plugins();
@@ -80,15 +79,15 @@ function WooPUS_dependencies_check() {
         // $actions[]="<span class=$action><a href='$activate_url'>" . __("Install") . "</a></span>";
       }
       if($dependency['optional']) $recommended[]=$dependency['name'] . sprintf(' (%s) ', __('recommended', 'woopus')) . join(' ', $actions);
-      else $required[]=$dependency['name'] . sprintf(' (%s) ', __('required', 'woopus')) . join(' ', $actions);
+      else $WooPUS_required[]=$dependency['name'] . sprintf(' (%s) ', __('required', 'woopus')) . join(' ', $actions);
       // $unmet[]="$plugin " . $dependency['name'] . ' ' . join(' ', $actions);
     }
     $WooPUS_Recommended[$dependency['name']]=$dependency['name'] . " <span class=actions>" . join(' ', $actions) . "</span>";
   }
-  if(!empty($required)) {
+  if(!empty($WooPUS_required)) {
     // $notices[] = new WooPUS_Notice( "<p><strong>$new_license->message</strong>: $new_license->package_slug $new_license->license_key $new_license->email $new_license->owner_name</p>", $new_license->result );
     $message = "<h2>" . sprintf( __("%s requires these plugins:", 'woopus') , 'WooPUS' ) . "</h2>"
-    . "<ul><li><strong>" . join("</li><li>", $required) . "</strong></li></ul>";
+    . "<ul><li><strong>" . join("</li><li>", $WooPUS_required) . "</strong></li></ul>";
 
     if(!empty($recommended))
     $message .= "<ul><li>" . join("</li><li>", $recommended) . "</li></ul></p>";
