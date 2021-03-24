@@ -23,6 +23,13 @@
 if ( ! defined( 'WPINC' ) ) die;
 if ( ! defined( 'WOOPUS_SLUG' ) ) define('WOOPUS_SLUG', 'woopus' );
 
+function WooPUS_load_textdomain() {
+	$textdomain = 'woopus';
+	$result = load_plugin_textdomain( $textdomain, false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+}
+// add_action( 'init', 'WooPUS_load_textdomain' );
+WooPUS_load_textdomain();
+
 if(is_admin()) {
 	require_once __DIR__ . '/admin/init.php';
 	// require_once __DIR__ . '/admin/wp-dependencies.php';
@@ -47,10 +54,3 @@ function WooPUS_load_plugin_css() {
 	wp_enqueue_style( WOOPUS_SLUG . '-global', plugin_dir_url( __FILE__ ) . 'css/global.css' );
 }
 add_action( 'wp_enqueue_scripts', 'WooPUS_load_plugin_css' );
-
-function WooPUS_load_textdomain() {
-	$textdomain = 'woopus';
-	$result = load_plugin_textdomain( $textdomain, false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-}
-add_action( 'init', 'WooPUS_load_textdomain' );
-// WooPUS_load_textdomain();
