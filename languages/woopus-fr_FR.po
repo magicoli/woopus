@@ -7,8 +7,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-03-07T15:37:12-04:00\n"
-"PO-Revision-Date: 2021-03-07 15:39-0400\n"
+"POT-Creation-Date: 2021-03-24T00:41:50-04:00\n"
+"PO-Revision-Date: 2021-03-24 00:42-0400\n"
 "Language: fr\n"
 "X-Generator: Poedit 2.3\n"
 "X-Poedit-Basepath: .\n"
@@ -34,27 +34,27 @@ msgstr "Magiiic"
 msgid "https://magiiic.com/"
 msgstr "https://magiiic.com/"
 
-#: admin/dependencies.php:60
+#: admin/dependencies.php:59
 msgid "Activate"
 msgstr "Activer"
 
-#: admin/dependencies.php:74
+#: admin/dependencies.php:73
 msgid "Install"
 msgstr "Installer"
 
-#: admin/dependencies.php:78
+#: admin/dependencies.php:77
 msgid "Download from %s"
 msgstr "Télécharger depuis %s"
 
-#: admin/dependencies.php:82
+#: admin/dependencies.php:81
 msgid "recommended"
 msgstr "recommandé"
 
-#: admin/dependencies.php:83
+#: admin/dependencies.php:82
 msgid "required"
 msgstr "requis"
 
-#: admin/dependencies.php:90
+#: admin/dependencies.php:89
 msgid "%s requires these plugins:"
 msgstr "%s requiert ces extensions:"
 
@@ -71,7 +71,7 @@ msgstr "Extensions recommandées"
 msgid "Get a license key on %s website"
 msgstr "Obtenez une clé de license sur %s"
 
-#: admin/init.php:128
+#: admin/init.php:137
 msgid "Show/Hide License key"
 msgstr "Afficher/Masquer Clé de licence"
 
@@ -95,47 +95,55 @@ msgstr "Synchroniser le produit avec les données du package de l'extension"
 msgid "Use with caution. This will replace title, excerpt, and content of your product page."
 msgstr "À utiliser avec précaution. Cela remplacera le titre, l'extrait et le contenu de la page produit."
 
+#: admin/settings.php:41
+msgid "Synchronize product thumbnails"
+msgstr "Synchroniser la vignette du produit"
+
+#: admin/settings.php:42
+msgid "There is only one generic thumbnail at this time. It will soon be synchronized with the icons provided by the extension. You should probably leave this option unchecked until then."
+msgstr "Il n'y a qu'une vignette générique pour l'instant. Elle sera bientôt synchronisée avec les icônes fournies par l'extension. Vous devriez probablement laisser cette option décochée d'ici là."
+
 #: admin/settings.php:77
 msgid "Settings"
 msgstr "Réglages"
 
-#: admin/woocommerce.php:135
+#: admin/woocommerce.php:137
 msgid "Version"
 msgstr "Version"
 
-#: admin/woocommerce.php:136
+#: admin/woocommerce.php:138
 msgid "Last updated"
 msgstr "Dernière mise à jour"
 
-#: admin/woocommerce.php:137
+#: admin/woocommerce.php:139
 msgid "Active installations"
 msgstr "Installations actives"
 
-#: admin/woocommerce.php:138
+#: admin/woocommerce.php:140
 msgid "WordPress Version"
 msgstr "Version WordPress"
 
-#: admin/woocommerce.php:139
+#: admin/woocommerce.php:141
 msgid "Tested up to"
 msgstr "Testé jusqu'à"
 
-#: admin/woocommerce.php:140
+#: admin/woocommerce.php:142
 msgid "PHP Version"
 msgstr "Version PHP"
 
-#: admin/woocommerce.php:141
+#: admin/woocommerce.php:143
 msgid "Languages"
 msgstr "Langues"
 
-#: admin/woocommerce.php:142
+#: admin/woocommerce.php:144
 msgid "Tags"
 msgstr "Étiquettes"
 
-#: admin/woocommerce.php:143
+#: admin/woocommerce.php:145
 msgid "Author"
 msgstr "Auteur"
 
-#: admin/woocommerce.php:144
+#: admin/woocommerce.php:146
 msgid "Donate link"
 msgstr "Soutenir le projet"
 

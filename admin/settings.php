@@ -39,7 +39,7 @@ function WooPUS_register_settings() {
   WooPUS_settings_add_option( 'WooPUS_product_update_thumb', '', array(
     'category' => 'Product updates',
     'name' => __('Synchronize product thumbnails', 'woopus'),
-    'description' => __('As for now, there is only a default thumbnail. It will be synchronized with the package icons soon, but you probably want to leave this option unchecked for now.', 'woopus'),
+    'description' => __('There is only one generic thumbnail at this time. It will soon be synchronized with the icons provided by the extension. You should probably leave this option unchecked until then.', 'woopus'),
     'type' => 'boolean',
   ));
 
