@@ -161,8 +161,8 @@ function woopus_filter_add_plugin_info($data , $postarr) {
   );
   // $debug['product'] = $product;
   $data['post_title'] = $meta['Plugin Name'] . " " . $meta['Version'] . " - by " . $meta['Author'];
-  $data['post_excerpt'] = $meta['Description'] . $metablock;
-  $data['post_content'] = $fullcontent;
+  $data['post_excerpt'] = "<div class='" . WOOPUS_SLUG . "-generated'>" . $meta['Description'] . $metablock . "</div>";
+  $data['post_content'] = "<div class='" . WOOPUS_SLUG . "-generated'>" . $fullcontent . "</div>";
 
   $icons = array(
     WP_PLUGIN_DIR . "/" . dirname(WOOPUS_PLUGIN_FILE) . '/assets/default-plugin-icon-256x256.png',

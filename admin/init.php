@@ -71,8 +71,17 @@ require(plugin_dir_path(__DIR__) . 'lib/parsedown/Parsedown.php');
 
 function WooPUS_load_admin_css() {
 	wp_enqueue_style( WOOPUS_SLUG . '-admin', plugin_dir_url( __FILE__ ) . 'admin.css' );
+  add_editor_style('custom-editor-style.css');
 }
 add_action( 'admin_enqueue_scripts', 'WooPUS_load_admin_css' );
+
+function WooPUS_mce_css( $mce_css ) {
+  if ( !empty( $mce_css ) )
+    $mce_css .= ',';
+    $mce_css .= plugins_url( 'admin-editor.css', __FILE__ );
+    return $mce_css;
+  }
+add_filter( 'mce_css', 'WooPUS_mce_css' );
 
 // Redirect to settings page after activation
 function WooPUS_activation_redirect( $plugin ) {

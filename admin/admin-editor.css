@@ -1,0 +1,8 @@
+.woopus-generated:before {
+  content: "Content generated automatically, any change will be overwritten.";
+  display: block;
+  font-weight: bold;
+  background: pink;
+  padding: 1em;
+  margin-bottom: 1em;
+}
