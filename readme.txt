@@ -71,6 +71,10 @@ There is only one question that matters, and the answer is 42.
 
 == Changelog ==
 
+= 1.2.3 =
+* added warning on generated content
+* fix translations loading too late
+
 = 1.2.2 =
 * fix dependencies conflict with other plugins
 
