@@ -71,6 +71,10 @@ There is only one question that matters, and the answer is 42.
 
 ## Changelog
 
+### 1.3
+* new readme sections displayed as product tabs
+* cache and permalink rules flush on acivation and update
+
 ### 1.2.3
 * added warning on generated content
 * fix translations loading too late
