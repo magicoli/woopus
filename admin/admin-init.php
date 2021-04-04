@@ -8,30 +8,6 @@
 
 if ( ! defined( 'WPINC' ) ) die;
 
-// Set constants. Only WOOPUS_SLUG should be changed, other values are fetched from plugin file
-// Some of these might also need to be defined in js files
-// if ( ! defined( 'WOOPUS_SLUG' ) ) define('WOOPUS_SLUG', 'woopus' );
-if ( ! defined( 'WOOPUS_PLUGIN_FILE' ) ) define('WOOPUS_PLUGIN_FILE', WOOPUS_SLUG . "/" . WOOPUS_SLUG . ".php" );
-
-$plugin_data = get_file_data(WP_PLUGIN_DIR . "/" . WOOPUS_PLUGIN_FILE, array(
-  'Name' => 'Plugin Name',
-  'PluginURI' => 'Plugin URI',
-  'Version' => 'Version',
-  'Description' => 'Description',
-  'Author' => 'Author',
-  'AuthorURI' => 'Author URI',
-  'TextDomain' => 'Text Domain',
-  'DomainPath' => 'Domain Path',
-  'Network' => 'Network',
-));
-if ( ! defined( 'WOOPUS_PLUGIN_NAME' ) ) define('WOOPUS_PLUGIN_NAME', $plugin_data['Name'] );
-if ( ! defined( 'WOOPUS_SHORTNAME' ) ) define('WOOPUS_SHORTNAME', preg_replace('/ - .*/', '', WOOPUS_PLUGIN_NAME ) );
-if ( ! defined( 'WOOPUS_PLUGIN_URI' ) ) define('WOOPUS_PLUGIN_URI', $plugin_data['PluginURI'] );
-if ( ! defined( 'WOOPUS_AUTHOR_NAME' ) ) define('WOOPUS_AUTHOR_NAME', $plugin_data['Author'] );
-if ( ! defined( 'WOOPUS_TXDOM' ) ) define('WOOPUS_TXDOM', ($plugin_data['TextDomain']) ? $plugin_data['TextDomain'] : WOOPUS_SLUG );
-if ( ! defined( 'WOOPUS_DATA_SLUG' ) ) define('WOOPUS_DATA_SLUG', sanitize_title(WOOPUS_PLUGIN_NAME) );
-if ( ! defined( 'WOOPUS_STORE_LINK' ) ) define('WOOPUS_STORE_LINK', "<a href=" . WOOPUS_PLUGIN_URI . " target=_blank>" . WOOPUS_AUTHOR_NAME . "</a>");
-
 if ( ! defined( 'WOOPUS_PACKAGE_KEYS' ) ) define('WOOPUS_PACKAGE_KEYS', array(
     'Plugin Name',
     'Plugin URI',
@@ -127,7 +103,7 @@ function woopus_alter_license_notice() {
   // global $woopus_alter_license_form;
   // if ( $woopus_alter_license_form ) return;
   $handle = WOOPUS_SLUG . '-wppus-hide-licence-warnings';
-  $js = plugins_url(WOOPUS_SLUG . '/js/wppus-hide-licence-warnings.js');
+  $js = plugin_dir_url( __FILE__ )  . '/js/wppus-hide-licence-warnings.js';
   wp_register_script( $handle, $js, array( 'wp-i18n', 'jquery' ) );
   // wp_set_script_translations( $handle, WOOPUS_TXDOM );
   wp_enqueue_script( $handle, $js );

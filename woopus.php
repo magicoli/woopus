@@ -23,15 +23,16 @@
 if ( ! defined( 'WPINC' ) ) die;
 if ( ! defined( 'WOOPUS_SLUG' ) ) define('WOOPUS_SLUG', 'woopus' );
 
-function WooPUS_load_textdomain() {
-	$textdomain = 'woopus';
-	$result = load_plugin_textdomain( $textdomain, false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-}
-// add_action( 'init', 'WooPUS_load_textdomain' );
-WooPUS_load_textdomain();
+// function WooPUS_load_textdomain() {
+// 	$textdomain = 'woopus';
+// 	$result = load_plugin_textdomain( $textdomain, false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+// }
+// // add_action( 'init', 'WooPUS_load_textdomain' );
+// WooPUS_load_textdomain();
 
+require_once __DIR__ . '/public/init.php';
 if(is_admin()) {
-	require_once __DIR__ . '/admin/init.php';
+	require_once __DIR__ . '/admin/admin-init.php';
 	// require_once __DIR__ . '/admin/wp-dependencies.php';
 }
 require_once __DIR__ . '/admin/license-manager-for-woocommerce.php';
@@ -52,7 +53,26 @@ $WooPUS_updater = new WP_Package_Updater(
 	true
 );
 
-function WooPUS_load_plugin_css() {
-	wp_enqueue_style( WOOPUS_SLUG . '-global', plugin_dir_url( __FILE__ ) . 'css/global.css' ); #, array(), time() );
+// function WooPUS_load_plugin_css() {
+// 	wp_enqueue_style( WOOPUS_SLUG . '-global', plugin_dir_url( __FILE__ ) . 'css/global.css' ); #, array(), time() );
+// }
+// add_action( 'wp_enqueue_scripts', 'WooPUS_load_plugin_css' );
+
+/**
+ * The code that runs during plugin activation.
+ */
+function activate_woopus() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-activate.php';
+	Woopus_Activate::activate();
 }
-add_action( 'wp_enqueue_scripts', 'WooPUS_load_plugin_css' );
+
+/**
+ * The code that runs during plugin deactivation.
+ */
+function deactivate_woopus() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-deactivate.php';
+	Woopus_Deactivate::deactivate();
+}
+
+register_activation_hook( __FILE__, 'activate_woopus' );
+register_deactivation_hook( __FILE__, 'deactivate_woopus' );
