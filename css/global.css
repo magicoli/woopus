@@ -45,3 +45,16 @@
     font-size: .8rem;
     list-style-type: none;
 }
+.parsedown ul {
+  list-style: disc;
+  padding-left: 1em;
+  /* margin-bottom: 15px; */
+}
+.parsedown ol {
+  list-style: decimal;
+  padding-left: 2em;
+  /* margin-bottom: 15px; */
+}
+#tab-description h2:first-of-type {
+  display: none;
+}

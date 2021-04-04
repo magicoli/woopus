@@ -126,10 +126,15 @@ function woopus_filter_add_plugin_info($data , $postarr) {
     $split = preg_split ( '/\s*==\s*\n/' , $raw );
     $meta_key = sanitize_title($split[0]);
     $section['title'] = $split[0];
-    $section['content'] = preg_replace('/=(.*)=/', '<h3>$1</h3>', "\n" . $Parsedown->text($split[1]) . "\n");
+    $section['content'] = "\n" . $Parsedown->text($split[1]) . "\n";
+    // $section['content'] = preg_replace('/== *Description *==/', '', $section['content']);
+    // // $section['content'] = preg_replace('/<h2>Description</h2>/', '', $section['content']);
+    $section['content'] = preg_replace('/=(.*)=/', '<h3>$1</h3>', $section['content']);
+    if($section['content']) $section['content'] = "<div class='woopus parsedown'>" . $section['content'] . "</div>";
     $sections[$meta_key] = $section;
     if(! $fullcontent ) $fullcontent .= $section['content'];
-    else $fullcontent .= "<h2>" . $section['title'] . "</h2>" . $section['content'];
+    // else $fullcontent .= "<h2>" . $section['title'] . "</h2>" . $section['content'];
+    else $product_tabs[$meta_key] = $section;
   }
   // echo "sections: " . print_r($sections, true) . $n;
   // $fullcontent = sprintf("<div class=headers>%s<div class=headerstitle style='display:flex'>%s<div>&nbsp;</div>%s</div></div>", $headers['banner'], $headers['logo'],$headers['title'] ) . $fullcontent;
@@ -203,7 +208,7 @@ function woopus_filter_add_plugin_info($data , $postarr) {
         $debug['generate'] = $try;
         $attachment_id = $try['attachment_id'];
 
-        $featured_image = wp_get_attachment_url($attachment_id);
+        $featured_image = wp_get_attachment_url($$metaattachment_id);
         break;
       }
     } else {
@@ -235,6 +240,7 @@ function woopus_filter_add_plugin_info($data , $postarr) {
 
   update_post_meta( $product_id, WOOPUS_SLUG . '_data', $meta );
   update_post_meta( $product_id, WOOPUS_SLUG . '_sections', $sections );
+  update_post_meta( $product_id, WOOPUS_SLUG . '_product_tabs', $product_tabs );
   return $data;
 }
 

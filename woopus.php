@@ -40,6 +40,8 @@ require_once __DIR__ . '/admin/wp-plugin-update-server-api.php';
 // require_once __DIR__ . '/inc/blocks.php';
 // require_once __DIR__ . '/inc/shortcodes.php';
 // require_once __DIR__ . '/inc/widgets.php';
+// if(!get_option('woopus_disable_templates'))
+require_once __DIR__ . '/templates/templates.php';
 
 /** Enable plugin updates with license check **/
 require_once plugin_dir_path( __FILE__ ) . 'lib/wp-package-updater/class-wp-package-updater.php';
@@ -51,6 +53,6 @@ $WooPUS_updater = new WP_Package_Updater(
 );
 
 function WooPUS_load_plugin_css() {
-	wp_enqueue_style( WOOPUS_SLUG . '-global', plugin_dir_url( __FILE__ ) . 'css/global.css' );
+	wp_enqueue_style( WOOPUS_SLUG . '-global', plugin_dir_url( __FILE__ ) . 'css/global.css' ); #, array(), time() );
 }
 add_action( 'wp_enqueue_scripts', 'WooPUS_load_plugin_css' );
