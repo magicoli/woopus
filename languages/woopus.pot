@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the WooPUS - WooCommerce Integration for Plugin Update Server plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooPUS - WooCommerce Integration for Plugin Update Server 1.2.2\n"
+"Project-Id-Version: WooPUS - WooCommerce Integration for Plugin Update Server 1.2.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woopus\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-03-24T00:50:58-04:00\n"
+"POT-Creation-Date: 2021-04-04T10:03:37-04:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0-alpha-3f4c34b\n"
 
@@ -31,6 +31,15 @@ msgstr ""
 
 #. Author URI of the plugin
 msgid "https://magiiic.com/"
+msgstr ""
+
+#. translators: %s is replaced by the name of the plugin, untranslated
+#: admin/admin-init.php:38
+msgid "Get a license key on %s website"
+msgstr ""
+
+#: admin/admin-init.php:113
+msgid "Show/Hide License key"
 msgstr ""
 
 #: admin/dependencies.php:59
@@ -65,15 +74,6 @@ msgstr ""
 msgid "Recommended plugins"
 msgstr ""
 
-#. translators: %s is replaced by the name of the plugin, untranslated
-#: admin/init.php:62
-msgid "Get a license key on %s website"
-msgstr ""
-
-#: admin/init.php:137
-msgid "Show/Hide License key"
-msgstr ""
-
 #: admin/settings.php:16
 msgid "License key"
 msgstr ""
@@ -106,43 +106,43 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: admin/woocommerce.php:137
+#: admin/woocommerce.php:142
 msgid "Version"
 msgstr ""
 
-#: admin/woocommerce.php:138
+#: admin/woocommerce.php:143
 msgid "Last updated"
 msgstr ""
 
-#: admin/woocommerce.php:139
+#: admin/woocommerce.php:144
 msgid "Active installations"
 msgstr ""
 
-#: admin/woocommerce.php:140
+#: admin/woocommerce.php:145
 msgid "WordPress Version"
 msgstr ""
 
-#: admin/woocommerce.php:141
+#: admin/woocommerce.php:146
 msgid "Tested up to"
 msgstr ""
 
-#: admin/woocommerce.php:142
+#: admin/woocommerce.php:147
 msgid "PHP Version"
 msgstr ""
 
-#: admin/woocommerce.php:143
+#: admin/woocommerce.php:148
 msgid "Languages"
 msgstr ""
 
-#: admin/woocommerce.php:144
+#: admin/woocommerce.php:149
 msgid "Tags"
 msgstr ""
 
-#: admin/woocommerce.php:145
+#: admin/woocommerce.php:150
 msgid "Author"
 msgstr ""
 
-#: admin/woocommerce.php:146
+#: admin/woocommerce.php:151
 msgid "Donate link"
 msgstr ""
 
