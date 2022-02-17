@@ -1,6 +1,7 @@
 ## Changelog
 
-### Unreleased
+### 1.3.1
+* don't translate meta names (readme.txt is expected to be in English)
 
 ### 1.3
 * new readme sections displayed as product tabs
