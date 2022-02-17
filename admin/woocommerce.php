@@ -139,16 +139,16 @@ function woopus_filter_add_plugin_info($data , $postarr) {
   // echo "sections: " . print_r($sections, true) . $n;
   // $fullcontent = sprintf("<div class=headers>%s<div class=headerstitle style='display:flex'>%s<div>&nbsp;</div>%s</div></div>", $headers['banner'], $headers['logo'],$headers['title'] ) . $fullcontent;
   $plugin_metas = array_filter(array(
-    __('Version', WOOPUS_TXDOM ) => $meta['Version'],
-    __('Last updated', WOOPUS_TXDOM ) => $meta['Last updated'],
-    __('Active installations', WOOPUS_TXDOM ) => '',
-    __('WordPress Version', WOOPUS_TXDOM ) => $meta['Requires at least'],
-    __('Tested up to', WOOPUS_TXDOM ) => $meta['Tested up to'],
-    __('PHP Version', WOOPUS_TXDOM ) => $meta['Requires PHP'],
-    __('Languages', WOOPUS_TXDOM ) => $meta['Languages'],
-    __('Tags', WOOPUS_TXDOM ) => $meta['Tags'],
-    __('Author', WOOPUS_TXDOM ) => "<a href='" . $meta['Author URI'] ."' target=_blank>" . $meta['Author'] . "</a>",
-    __('Donate link', WOOPUS_TXDOM ) => "<a href='" . $meta['Donate link'] ."' target=_blank>" . $meta['Donate link'] . "</a>",
+    'Version' => $meta['Version'],
+    'Last updated' => $meta['Last updated'],
+    'Active installations' => '',
+    'WordPress Version' => $meta['Requires at least'],
+    'Tested up to' => $meta['Tested up to'],
+    'PHP Version' => $meta['Requires PHP'],
+    'Languages' => $meta['Languages'],
+    'Tags' => $meta['Tags'],
+    'Author' => "<a href='" . $meta['Author URI'] ."' target=_blank>" . $meta['Author'] . "</a>",
+    'Donate link' => "<a href='" . $meta['Donate link'] ."' target=_blank>" . $meta['Donate link'] . "</a>",
   ) );
   foreach($plugin_metas as $key => $value ) {
     $metablock .= "<li>" . $key . " <strong>" . $value . "</strong></li>";
