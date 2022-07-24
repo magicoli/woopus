@@ -2,10 +2,10 @@
 Contributors: magicoli69
 Donate link: https://paypal.me/magicoli
 Tags: wppus, plugin update server, WooCommerce, license keys
-Requires at least: 4.5
-Tested up to: 5.6.2
+Requires at least: 5.0
+Tested up to: 6.0.1
 Requires PHP: 5.6
-Stable tag: 0.1.0
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Disclaimer: This plugin is in an early stage. Although you can get it for free if you search a little bit, buying it will fund development and help providing future features.
@@ -53,6 +53,9 @@ When you upload the plugin manually, WooPUS will try to fetch the data from the 
 There is only one question that matters, and the answer is 42.
 
 == Changelog ==
+
+= 1.3.2 =
+* updated minimum wp version
 
 = 1.3.1 =
 * don't translate meta names (readme.txt is expected to be in English)

@@ -1,5 +1,8 @@
 ## Changelog
 
+### 1.3.2
+* updated minimum wp version
+
 ### 1.3.1
 * don't translate meta names (readme.txt is expected to be in English)
 
